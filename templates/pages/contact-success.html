@@ -1,0 +1,127 @@
+
+
+<!DOCTYPE html>
+
+<html
+    lang="{{ request.LANGUAGE_CODE }}"
+    dir="{% if request.LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}"
+>
+
+<head>
+
+<meta charset="UTF-8">
+<meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}پیام شما با موفقیت ارسال شد | AWMJA{% else %}Your message has been sent successfully | AWMJA{% endif %}"
+    >
+{% load static %}
+    <link
+        rel="stylesheet"
+        href="{% static 'css/contact-success.css' %}"
+    >
+
+    <title>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            پیام شما ارسال شد | AWMJA
+        {% else %}
+            Message Sent | AWMJA
+        {% endif %}
+    </title>
+
+</head>
+
+<body>
+
+
+<main class="contact-success-page">
+
+    <div class="contact-success-container">
+
+        <section class="contact-success-card">
+
+
+            <!-- ICON -->
+
+
+
+<!-- SUCCESS ICON -->
+<!-- LOGO -->
+
+<div class="contact-success-logo">
+
+    <img
+        src="{% static 'assests/images/logo.jpeg' %}"
+        alt="AWMJA Logo"
+    >
+
+</div>
+
+            <!-- KICKER -->
+
+            <div class="contact-success-kicker">
+
+                AWMJA
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            {% if request.LANGUAGE_CODE == 'fa' %}
+            
+
+                <h1>
+                    پیام شما با موفقیت ارسال شد.
+                </h1>
+
+                <p>
+                    از اینکه با ما در ارتباط شدید سپاسگزاریم.
+                    پیام شما دریافت شد و در اولین فرصت بررسی خواهد شد.
+                </p>
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="contact-success-button"
+                >
+                    بازگشت به صفحه تماس
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+
+            {% else %}
+
+                <h1>
+                    Your message has been sent successfully.
+                </h1>
+
+                <p>
+                    Thank you for getting in touch with us.
+                    Your message has been received and will be reviewed
+                    as soon as possible.
+                </p>
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="contact-success-button"
+                >
+                    Back to Contact
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+
+            {% endif %}
+
+
+        </section>
+
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

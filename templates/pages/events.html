@@ -1,0 +1,1885 @@
+
+<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE }}" dir="{% if request.LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    {% load static %}
+
+    <!-- =========================================
+         SEO
+         ========================================= -->
+
+    <meta
+        name="description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}رویدادها، نشست‌ها و فعالیت‌های جنبش زنان افغانستان برای عدالت و آگاهی؛ آشنایی با برنامه‌ها و رویدادهای مرتبط با حقوق زنان، عدالت و برابری.{% else %}Discover events, meetings, and activities of the Afghanistan Women’s Movement for Justice and Awareness (AWMJA) focused on women’s rights, justice, awareness, and equality.{% endif %}"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="author"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <!-- Canonical -->
+    <link
+        rel="canonical"
+        href="{{ request.build_absolute_uri }}"
+    >
+
+    <!-- =========================================
+         OPEN GRAPH
+         ========================================= -->
+
+    <meta
+        property="og:title"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}رویدادها و نشست‌ها | جنبش زنان افغانستان برای عدالت و آگاهی{% else %}Events & Meetings | Afghanistan Women’s Movement for Justice and Awareness{% endif %}"
+    >
+
+    <meta
+        property="og:description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}رویدادها، نشست‌ها و فعالیت‌های جنبش زنان افغانستان برای عدالت و آگاهی.{% else %}Events, meetings, and activities of the Afghanistan Women’s Movement for Justice and Awareness.{% endif %}"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.build_absolute_uri }}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}fa_AF{% else %}en_US{% endif %}"
+    >
+
+    <!-- =========================================
+         PAGE TITLE
+         ========================================= -->
+
+    <title>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            رویدادها و نشست‌ها | جنبش زنان افغانستان برای عدالت و آگاهی
+        {% else %}
+            Events & Meetings | Afghanistan Women’s Movement for Justice and Awareness
+        {% endif %}
+    </title>
+
+    {% for event in schema_events %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+
+  "@id": "{{ request.scheme }}://{{ request.get_host }}{% url 'events' %}#event-{{ event.id }}",
+
+  "name": "{% if request.LANGUAGE_CODE == 'fa' %}{{ event.title_fa|escapejs }}{% else %}{{ event.title_en|default:event.title_fa|escapejs }}{% endif %}",
+
+  "description": "{% if request.LANGUAGE_CODE == 'fa' %}{{ event.description_fa|default:event.title_fa|escapejs }}{% else %}{{ event.description_en|default:event.title_en|default:event.title_fa|escapejs }}{% endif %}",
+
+  "startDate": "{{ event.event_date|date:'Y-m-d' }}",
+
+  {% if event.image %}
+  "image": [
+    "{{ request.scheme }}://{{ request.get_host }}{{ event.image.url }}"
+  ],
+  {% endif %}
+
+  {% if request.LANGUAGE_CODE == 'fa' %}
+  {% if event.location_fa %}
+  "location": {
+    "@type": "Place",
+    "name": "{{ event.location_fa|escapejs }}"
+  },
+  {% endif %}
+  {% else %}
+  {% if event.location_en %}
+  "location": {
+    "@type": "Place",
+    "name": "{{ event.location_en|escapejs }}"
+  },
+  {% endif %}
+  {% endif %}
+
+  "organizer": {
+    "@type": "Organization",
+    "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization",
+    "name": "Afghanistan Women’s Movement for Justice and Awareness",
+    "url": "{{ request.scheme }}://{{ request.get_host }}/"
+  },
+
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'events' %}"
+}
+</script>
+
+
+<!-- =====================================================
+     Schema.org — BreadcrumbList
+====================================================== -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{% if request.LANGUAGE_CODE == 'fa' %}خانه{% else %}Home{% endif %}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{% if request.LANGUAGE_CODE == 'fa' %}رویدادها{% else %}Events{% endif %}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'events' %}"
+    }
+  ]
+}
+</script>
+{% endfor %}
+
+    <!-- =========================================
+         FONT AWESOME
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'assests/fontawosem/css/all.min.css' %}"
+    >
+
+    <!-- =========================================
+         GLOBAL CSS
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/index.css' %}"
+    >
+
+    <!-- =========================================
+         EVENTS CSS
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/events.css' %}"
+    >
+
+</head>
+
+<body>
+
+   
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container nav-wrap">
+
+        <!-- Brand -->
+
+        <a href="index.html" class="brand">
+
+            <img
+              src="{% static 'assests/images/logo.jpeg' %}"
+                alt="AWMJA Logo"
+            >
+
+            <div class="brand-text">
+                  {% if request.LANGUAGE_CODE == 'fa' %}
+
+                <strong>
+                    جنبش زنان افغانستان برای عدالت و آگاهی
+                </strong>
+
+                <span>
+                    Afghanistan Women’s Movement for Justice and Awareness
+                </span>
+                 {% else %}
+
+                    <strong>
+                        Afghanistan Women’s Movement for Justice and Awareness
+                    </strong>
+
+
+                {% endif %}
+
+
+                <small>
+                    AWMJA
+                </small>
+
+            </div>
+
+        </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <nav
+            class="main-nav"
+            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی اصلی{% else %}Main navigation{% endif %}"
+        >
+
+            <a href="{% url 'home' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    صفحه اصلی
+                {% else %}
+                    Home
+                {% endif %}
+            </a>
+
+            <a href="{% url 'about' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    درباره ما
+                {% else %}
+                    About Us
+                {% endif %}
+            </a>
+
+            <a href="{% url 'mission_vision' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مأموریت و چشم‌انداز
+                {% else %}
+                    Mission & Vision
+                {% endif %}
+            </a>
+
+            <a href="{% url 'goals' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اهداف ما
+                {% else %}
+                    Our Goals
+                {% endif %}
+            </a>
+
+            <a href="{% url 'activities' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    فعالیت‌های ما
+                {% else %}
+                    Our Activities
+                {% endif %}
+            </a>
+
+            <a href="{% url 'achievements' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    دستاوردها
+                {% else %}
+                    Achievements
+                {% endif %}
+            </a>
+
+            <a href="{% url 'leadership' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رهبری
+                {% else %}
+                    Leadership
+                {% endif %}
+            </a>
+
+            <a href="{% url 'news' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اخبار
+                {% else %}
+                    News
+                {% endif %}
+            </a>
+
+            <a href="{% url 'events' %}" class="active">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رویدادها
+                {% else %}
+                    Events
+                {% endif %}
+            </a>
+
+            <a href="{% url 'articles' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مقالات
+                {% else %}
+                    Articles
+                {% endif %}
+            </a>
+
+            <a href="{% url 'gallery' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    گالری
+                {% else %}
+                    Gallery
+                {% endif %}
+            </a>
+
+            <a href="{% url 'contact' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    تماس
+                {% else %}
+                    Contact
+                {% endif %}
+            </a>
+
+        </nav>
+
+             <!-- Desktop Actions -->
+
+<div class="nav-actions">
+
+    <!-- Persian -->
+
+    <form action="{% url 'set_language' %}" method="post">
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="language"
+            value="fa"
+        >
+
+        <input
+            type="hidden"
+            name="next"
+            value="{{ request.path }}"
+        >
+
+        <button
+            class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+            type="submit"
+        >
+            FA
+        </button>
+
+    </form>
+
+
+    <!-- English -->
+
+    <form action="{% url 'set_language' %}" method="post">
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="language"
+            value="en"
+        >
+
+        <input
+            type="hidden"
+            name="next"
+            value="{{ request.path }}"
+        >
+
+        <button
+            class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+            type="submit"
+        >
+            EN
+        </button>
+
+    </form>
+
+
+    <!-- CTA -->
+
+    <a
+        href="{% url 'contact' %}"
+        class="btn btn-primary nav-cta"
+    >
+        {% if request.LANGUAGE_CODE == "fa" %}
+            حمایت از جنبش
+        {% else %}
+            Support the Movement
+        {% endif %}
+    </a>
+
+</div>
+
+
+
+
+            <!-- Mobile Menu Button -->
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="باز کردن منو"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- Mobile Menu -->
+
+            <div
+                class="mobile-menu"
+                id="mobile-menu"
+            >
+
+                <nav
+                    class="mobile-nav"
+                    a <nav
+                class="mobile-nav"
+                aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی موبایل{% else %}Mobile navigation{% endif %}"
+            >
+
+                <a href="{% url 'home' %}" >
+                    {% if request.LANGUAGE_CODE == "fa" %}صفحه اصلی{% else %}Home{% endif %}
+                </a>
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}درباره ما{% else %}About Us{% endif %}
+                </a>
+
+                <a href="{% url 'mission_vision' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}مأموریت و چشم‌انداز{% else %}Mission & Vision{% endif %}
+                </a>
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اهداف ما{% else %}Our Goals{% endif %}
+                </a>
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}فعالیت‌های ما{% else %}Our Activities{% endif %}
+                </a>
+
+                <a href="{% url 'achievements' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}دستاوردها{% else %}Achievements{% endif %}
+                </a>
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}رهبری{% else %}Leadership{% endif %}
+                </a>
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اخبار{% else %}News{% endif %}
+                </a>
+
+                <a href="{% url 'events' %}"class="active">
+                    {% if request.LANGUAGE_CODE == "fa" %}رویدادها{% else %}Events{% endif %}
+                </a>
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}مقالات{% else %}Articles{% endif %}
+                </a>
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}گالری{% else %}Gallery{% endif %}
+                </a>
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}تماس{% else %}Contact{% endif %}
+                </a>
+
+            </nav>
+
+
+               
+             
+            <!-- Mobile Language -->
+
+            <div class="mobile-language">
+
+                <span>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        زبان
+                    {% else %}
+                        Language
+                    {% endif %}
+                </span>
+
+                <div>
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="fa"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            فارسی
+                        </button>
+
+                    </form>
+
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="en"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            English
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile CTA -->
+
+            <div class="mobile-menu-action">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-primary"
+                >
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        حمایت از جنبش
+                    {% else %}
+                        Support the Movement
+                    {% endif %}
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+     EVENTS HERO
+     ================================================= -->
+
+<section class="events-hero">
+
+    <div class="container">
+
+        <div class="events-hero-content">
+
+            <span class="section-kicker">
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    رویدادها و نشست‌ها
+                {% else %}
+                    EVENTS &amp; MEETINGS
+                {% endif %}
+
+            </span>
+
+            <h1>
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    حضور،
+                    <span>گفت‌وگو</span>
+                    و دادخواهی
+                {% else %}
+                    Presence,
+                    <span>Dialogue</span>
+                    and Advocacy
+                {% endif %}
+
+            </h1>
+
+            <p>
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    رویدادها، نشست‌ها و فعالیت‌های جنبش زنان
+                    افغانستان برای عدالت و آگاهی؛ از نشست‌های
+                    مدنی و حقوق بشری تا برنامه‌های ملی و بین‌المللی.
+                {% else %}
+                    Events, meetings, and activities of the Afghanistan
+                    Women’s Movement for Justice and Awareness;
+                    from civil and human rights discussions to national
+                    and international programs.
+                {% endif %}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     EVENTS INTRO
+     ================================================= -->
+
+<section class="events-intro-section">
+
+    <div class="container">
+
+        <div class="events-intro-grid">
+
+            <div>
+
+                <span class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادهای ما
+                    {% else %}
+                        OUR EVENTS
+                    {% endif %}
+
+                </span>
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        صدای ما در
+                        <span>نشست‌ها</span>
+                    {% else %}
+                        Our Voice in
+                        <span>Meetings</span>
+                    {% endif %}
+
+                </h2>
+
+            </div>
+
+            <p>
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    ما با حضور در نشست‌ها، کنفرانس‌ها، گفت‌وگوهای
+                    مدنی و برنامه‌های حقوق بشری تلاش می‌کنیم
+                    صدای زنان افغانستان را به گوش جامعه ملی
+                    و بین‌المللی برسانیم.
+                {% else %}
+                    Through our participation in meetings, conferences,
+                    civil dialogues, and human rights programs, we strive
+                    to amplify the voices of Afghan women and bring them
+                    to the attention of national and international communities.
+                {% endif %}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <!-- =================================================
+     UPCOMING EVENTS
+     ================================================= -->
+
+<section class="events-list-section upcoming-events">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادهای پیش‌رو
+                    {% else %}
+                        UPCOMING
+                    {% endif %}
+
+                </span>
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادهای پیش‌رو
+                    {% else %}
+                        Upcoming Events
+                    {% endif %}
+
+                </h2>
+
+            </div>
+
+            <span class="section-count">
+                {{ upcoming_events|length }}
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    رویداد
+                {% else %}
+                    EVENTS
+                {% endif %}
+            </span>
+
+        </div>
+
+
+        <div class="events-grid">
+
+
+            {% for event in upcoming_events %}
+
+                <!-- Event -->
+
+                <article
+                    class="event-card"
+                    data-event-status="upcoming"
+                >
+
+                    <div class="event-image">
+
+                        {% if event.image %}
+
+                            <img
+                                src="{{ event.image.url }}"
+                                alt="{% if request.LANGUAGE_CODE == 'fa' %}{{ event.image_alt_fa|default:event.title_fa }}{% else %}{{ event.image_alt_en|default:event.title_en }}{% endif %}"
+                            >
+
+                        {% endif %}
+
+                        <span class="event-status">
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                پیش‌رو
+                            {% else %}
+                                Upcoming
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="event-body">
+
+                        <div class="event-meta">
+
+                            <span>
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+
+                                    {{ event.event_date|date:"d F Y" }}
+
+                                {% else %}
+
+                                    {{ event.event_date|date:"d F Y" }}
+
+                                {% endif %}
+
+                            </span>
+
+
+                            <span>
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    {{ event.location_fa }}
+                                {% else %}
+                                    {{ event.location_en }}
+                                {% endif %}
+
+                            </span>
+
+                        </div>
+
+
+                        <span class="event-category">
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.category_fa }}
+                            {% else %}
+                                {{ event.category_en }}
+                            {% endif %}
+
+                        </span>
+
+
+                        <h3>
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.title_fa }}
+                            {% else %}
+                                {{ event.title_en }}
+                            {% endif %}
+
+                        </h3>
+
+
+                        <p>
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.description_fa }}
+                            {% else %}
+                                {{ event.description_en }}
+                            {% endif %}
+
+                        </p>
+
+
+                        {% if event.external_url %}
+
+                            <a
+                                href="{{ event.external_url }}"
+                                class="event-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    مشاهده جزئیات
+                                {% else %}
+                                    View Details
+                                {% endif %}
+
+                                <i class="fa-solid fa-arrow-left"></i>
+
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% empty %}
+
+                <p>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در حال حاضر رویداد پیش‌رویی ثبت نشده است.
+                    {% else %}
+                        There are currently no upcoming events.
+                    {% endif %}
+
+                </p>
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     FEATURED EVENT
+     ================================================= -->
+
+<section class="featured-event">
+
+    <div class="container">
+
+        <div class="featured-event-inner">
+
+
+            <div class="featured-event-image">
+
+                {% if featured_event.image %}
+
+                    <img
+                        src="{{ featured_event.image.url }}"
+                        alt="{% if request.LANGUAGE_CODE == 'fa' %}{{ featured_event.image_alt_fa|default:featured_event.title_fa }}{% else %}{{ featured_event.image_alt_en|default:featured_event.title_en }}{% endif %}"
+                    >
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="featured-event-content">
+
+                <span class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویداد ویژه
+                    {% else %}
+                        FEATURED EVENT
+                    {% endif %}
+
+                </span>
+
+
+                <span class="event-category">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ featured_event.category_fa }}
+                    {% else %}
+                        {{ featured_event.category_en }}
+                    {% endif %}
+
+                </span>
+
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ featured_event.title_fa }}
+                    {% else %}
+                        {{ featured_event.title_en }}
+                    {% endif %}
+
+                </h2>
+
+
+                <p>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ featured_event.description_fa }}
+                    {% else %}
+                        {{ featured_event.description_en }}
+                    {% endif %}
+
+                </p>
+
+
+                <div class="featured-event-details">
+
+
+                    <div>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <div>
+
+                            <small>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    تاریخ
+                                {% else %}
+                                    Date
+                                {% endif %}
+
+                            </small>
+
+                            <strong>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    {{ featured_event.event_date|date:"d F Y" }}
+                                {% else %}
+                                    {{ featured_event.event_date|date:"d F Y" }}
+                                {% endif %}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <small>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    محل
+                                {% else %}
+                                    Location
+                                {% endif %}
+
+                            </small>
+
+                            <strong>
+
+                                {% if request.LANGUAGE_CODE == 'fa' %}
+                                    {{ featured_event.location_fa }}
+                                {% else %}
+                                    {{ featured_event.location_en }}
+                                {% endif %}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                {% if featured_event.external_url %}
+
+                    <a
+                        href="{{ featured_event.external_url }}"
+                        class="btn btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            مشاهده جزئیات
+                        {% else %}
+                            View Details
+                        {% endif %}
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                    </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAST EVENTS
+     ================================================= -->
+
+<section class="events-list-section past-events">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        آرشیو
+                    {% else %}
+                        ARCHIVE
+                    {% endif %}
+
+                </span>
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادهای گذشته
+                    {% else %}
+                        Past Events
+                    {% endif %}
+
+                </h2>
+
+            </div>
+
+            <span class="section-count">
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    آرشیو رویدادها
+                {% else %}
+                    EVENT ARCHIVE
+                {% endif %}
+
+            </span>
+
+        </div>
+
+
+        <div class="past-events-list">
+
+
+            {% for event in past_events %}
+
+                <!-- Past Event -->
+
+                <article class="past-event">
+
+
+                    <div class="past-event-date">
+
+                        <strong>
+                            {{ event.event_date|date:"d" }}
+                        </strong>
+
+                        <span>
+
+                            {{ event.event_date|date:"M"|upper }}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="past-event-content">
+
+                        <span class="event-category">
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.category_fa }}
+                            {% else %}
+                                {{ event.category_en }}
+                            {% endif %}
+
+                        </span>
+
+
+                        <h3>
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.title_fa }}
+                            {% else %}
+                                {{ event.title_en }}
+                            {% endif %}
+
+                        </h3>
+
+
+                        <p>
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.description_fa }}
+                            {% else %}
+                                {{ event.description_en }}
+                            {% endif %}
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="past-event-location">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <span>
+
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ event.location_fa }}
+                            {% else %}
+                                {{ event.location_en }}
+                            {% endif %}
+
+                        </span>
+
+                    </div>
+
+
+                    {% if event.external_url %}
+
+                        <a
+                            href="{{ event.external_url }}"
+                            class="past-event-link"
+                            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}مشاهده جزئیات رویداد{% else %}View event details{% endif %}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+
+                            <i class="fa-solid fa-arrow-left"></i>
+
+                        </a>
+
+                    {% endif %}
+
+
+                </article>
+
+            {% empty %}
+
+                <p>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        هنوز رویداد گذشته‌ای ثبت نشده است.
+                    {% else %}
+                        No past events have been recorded yet.
+                    {% endif %}
+
+                </p>
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     EVENT CTA
+     ================================================= -->
+
+<section class="events-cta">
+
+    <div class="container">
+
+        <div class="events-cta-inner">
+
+            <div>
+
+                <span class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در ارتباط باشید
+                    {% else %}
+                        STAY CONNECTED
+                    {% endif %}
+
+                </span>
+
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+
+                        در کنار ما
+                        <span>باشید.</span>
+
+                    {% else %}
+
+                        Stay
+                        <span>Connected.</span>
+
+                    {% endif %}
+
+                </h2>
+
+
+                <p>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+
+                        برای اطلاع از رویدادها، نشست‌ها و برنامه‌های
+                        آینده جنبش با ما در ارتباط باشید.
+
+                    {% else %}
+
+                        Stay connected with us to receive updates about
+                        upcoming events, meetings, and programs of the movement.
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+
+            <div class="events-cta-actions">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-light"
+                >
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تماس با جنبش
+                    {% else %}
+                        Contact the Movement
+                    {% endif %}
+
+                </a>
+
+
+                <a
+                    href="{% url 'news' %}"
+                    class="btn btn-outline join-outline"
+                >
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        آخرین اخبار
+                    {% else %}
+                        Latest News
+                    {% endif %}
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =================================================
+     JOIN / SUPPORT
+     ================================================= -->
+
+<section
+    class="join"
+    id="join"
+>
+
+    <div class="container">
+
+        <div class="join-inner">
+
+            <div class="join-content">
+
+                <p class="section-kicker">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در کنار زنان بایستید
+                    {% else %}
+                        STAND WITH WOMEN
+                    {% endif %}
+
+                </p>
+
+
+                <h2>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+
+                        صدای عدالت را
+                        <br>
+                        تقویت کنید.
+
+                    {% else %}
+
+                        Amplify the
+                        <br>
+                        Voice of Justice.
+
+                    {% endif %}
+
+                </h2>
+
+
+                <p>
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+
+                        با حمایت از تلاش‌های ما برای عدالت، آگاهی،
+                        برابری و دفاع از حقوق زنان و دختران افغانستان،
+                        به تقویت صدای آنان کمک کنید.
+
+                    {% else %}
+
+                        By supporting our efforts for justice, awareness,
+                        equality, and the rights of Afghan women and girls,
+                        you can help amplify their voices.
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+
+            <div class="join-actions">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-light"
+                >
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        عضو جنبش شوید
+                    {% else %}
+                        Join the Movement
+                    {% endif %}
+
+                </a>
+
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-outline join-outline"
+                >
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تماس با جنبش
+                    {% else %}
+                        Contact the Movement
+                    {% endif %}
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Footer Brand -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="{% static 'assests/images/logo.jpeg' %}"
+                    alt="AWMJA Logo"
+                >
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+
+                    <h3>
+                        جنبش زنان افغانستان
+                        برای عدالت و آگاهی
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        سازمان مستقل و مردمی حقوق بشری
+                        برای دفاع از حقوق زنان و دختران افغانستان.
+                    </p>
+
+                {% else %}
+
+                    <h3>
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        An independent grassroots human rights organization
+                        advocating for the rights of Afghan women and girls.
+                    </p>
+
+                {% endif %}
+
+
+                <!-- Social Media -->
+
+                <div class="socials">
+
+                    <a
+                        href="https://www.facebook.com/share/g/19NBaK5Lbx/?mibextid=wwXIfr"
+                        aria-label="Facebook"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a
+                        href="https://x.com/rasoli_ayoub?s=11"
+                        aria-label="Twitter"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دسترسی سریع
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'home' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        صفحه اصلی
+                    {% else %}
+                        Home
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        درباره ما
+                    {% else %}
+                        About Us
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        فعالیت‌های ما
+                    {% else %}
+                        Our Activities
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رهبری جنبش
+                    {% else %}
+                        Leadership
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اخبار و بیانیه‌ها
+                    {% else %}
+                        News & Statements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'events' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادها
+                    {% else %}
+                        Events
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Organization -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        سازمان
+                    {% else %}
+                        Organization
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'mission_vision' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مأموریت و چشم‌انداز
+                    {% else %}
+                        Mission & Vision
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اهداف ما
+                    {% else %}
+                        Our Goals
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'achievements' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دستاوردها
+                    {% else %}
+                        Achievements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        گالری
+                    {% else %}
+                        Gallery
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مقالات
+                    {% else %}
+                        Articles
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تماس با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="footer-contact">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        ارتباط با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </h4>
+
+
+                <!-- Email -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            EMAIL
+                        </span>
+
+                        <a href="mailto:info@awmja.org">
+                            info@awmja.org
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WhatsApp -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            WHATSAPP
+                        </span>
+
+                        <a
+                            href="https://wa.me/989017923524"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            +98 901 792 3524
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <a href="tel:+989330858940">
+                            +98 933 085 8940
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-map-marker-alt"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            LOCATION
+                        </span>
+
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            <p>
+                                افغانستان · ایران · استرالیا
+                            </p>
+                        {% else %}
+                            <p>
+                                Afghanistan · Iran · Australia
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="footer-bottom-inner">
+
+                <p class="footer-copyright">
+
+                    ©
+                    <span class="current-year"></span>
+
+                    Afghanistan Women’s Movement
+                    for Justice and Awareness.
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تمامی حقوق محفوظ است.
+                    {% else %}
+                        All rights reserved.
+                    {% endif %}
+
+                </p>
+
+
+                <p class="footer-credit">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        طراحی و توسعه توسط
+                    {% else %}
+                        Designed &amp; Developed by
+                    {% endif %}
+
+                    <strong>
+                        Rohullah Sadat
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+    <!-- =====================================================
+         BACK TO TOP
+         ===================================================== -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        type="button"
+        aria-label="بازگشت به بالای صفحه"
+        title="بازگشت به بالا"
+    >
+
+        <i class="fas fa-arrow-up"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <!-- Main Page JS -->
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <!-- Loader JS -->
+    <script src="{% static 'js/loader.js' %}"></script>
+    <!-- Back To Top JS -->
+    <script src="{% static 'js/back-to-top.js' %}"></script>
+</body>
+
+</html>
+

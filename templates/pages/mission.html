@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE }}" dir="{% if request.LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    {% load static %}
+
+    <!-- SEO Description -->
+    <meta
+        name="description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}آشنایی با رهبری و اعضای جنبش زنان افغانستان برای عدالت و آگاهی و نقش آنان در پیشبرد عدالت، آگاهی، حقوق زنان و برابری.{% else %}Meet the leadership of the Afghanistan Women’s Movement for Justice and Awareness (AWMJA) and learn about their roles and commitment to justice, women’s rights, awareness, and equality.{% endif %}"
+    >
+
+    <!-- SEO Robots -->
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <!-- Author -->
+    <meta
+        name="author"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <!-- Canonical -->
+    <link
+        rel="canonical"
+        href="{{ request.build_absolute_uri }}"
+    >
+
+    <!-- Open Graph -->
+    <meta
+        property="og:title"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}رهبری جنبش زنان افغانستان | AWMJA{% else %}Leadership | Afghanistan Women’s Movement for Justice and Awareness{% endif %}"
+    >
+
+    <meta
+        property="og:description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}آشنایی با رهبری و اعضای جنبش زنان افغانستان برای عدالت و آگاهی.{% else %}Meet the leadership and members of the Afghanistan Women’s Movement for Justice and Awareness.{% endif %}"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.build_absolute_uri }}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}fa_AF{% else %}en_US{% endif %}"
+    >
+
+    <!-- Page Title -->
+    <title>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            رهبری جنبش زنان افغانستان | AWMJA
+        {% else %}
+            Leadership | Afghanistan Women’s Movement for Justice and Awareness
+        {% endif %}
+    </title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="{% static 'assests/fontawosem/css/all.min.css' %}"
+    >
+
+    <!-- Global CSS -->
+    <link
+        rel="stylesheet"
+        href="{% static 'css/index.css' %}"
+    >
+
+    <!-- Leadership Page CSS -->
+    <link
+        rel="stylesheet"
+        href="{% static 'css/leadership.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/mission.css' %}"
+    >
+</head>
+
+<body>
+   <!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container nav-wrap">
+
+        <!-- Brand -->
+
+        <a href="{% url 'home' %}" class="brand">
+
+            <img
+                src="{% static 'assests/images/logo.jpeg' %}"
+                alt="AWMJA Logo"
+            >
+
+            <div class="brand-text">
+
+                <strong>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        {{ settings.site_name_fa }}
+                    {% else %}
+                        {{ settings.site_name_en }}
+                    {% endif %}
+                </strong>
+
+                <span>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        {{ settings.site_name_en }}
+                    {% else %}
+                        {{ settings.site_name_fa }}
+                    {% endif %}
+                </span>
+
+                <small>
+                    AWMJA
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <nav
+            class="main-nav"
+            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی اصلی{% else %}Main navigation{% endif %}"
+        >
+
+            <a href="{% url 'home' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    صفحه اصلی
+                {% else %}
+                    Home
+                {% endif %}
+            </a>
+
+            <a href="{% url 'about' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    درباره ما
+                {% else %}
+                    About Us
+                {% endif %}
+            </a>
+
+            <a href="{% url 'mission_vision' %}" class="active">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مأموریت و چشم‌انداز
+                {% else %}
+                    Mission & Vision
+                {% endif %}
+            </a>
+
+            <a href="{% url 'goals' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اهداف ما
+                {% else %}
+                    Our Goals
+                {% endif %}
+            </a>
+
+            <a href="{% url 'activities' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    فعالیت‌های ما
+                {% else %}
+                    Our Activities
+                {% endif %}
+            </a>
+
+            <a href="{% url 'achievements' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    دستاوردها
+                {% else %}
+                    Achievements
+                {% endif %}
+            </a>
+
+            <a href="{% url 'leadership' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رهبری
+                {% else %}
+                    Leadership
+                {% endif %}
+            </a>
+
+            <a href="{% url 'news' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اخبار
+                {% else %}
+                    News
+                {% endif %}
+            </a>
+
+            <a href="{% url 'events' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رویدادها
+                {% else %}
+                    Events
+                {% endif %}
+            </a>
+
+            <a href="{% url 'articles' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مقالات
+                {% else %}
+                    Articles
+                {% endif %}
+            </a>
+
+            <a href="{% url 'gallery' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    گالری
+                {% else %}
+                    Gallery
+                {% endif %}
+            </a>
+
+            <a href="{% url 'contact' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    تماس
+                {% else %}
+                    Contact
+                {% endif %}
+            </a>
+
+        </nav>
+
+
+        <!-- Desktop Actions -->
+
+        <div class="nav-actions">
+
+            <!-- Persian -->
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="language"
+                    value="fa"
+                >
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.path }}"
+                >
+
+                <button
+                    class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+                    type="submit"
+                >
+                    FA
+                </button>
+
+            </form>
+
+
+            <!-- English -->
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="language"
+                    value="en"
+                >
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.path }}"
+                >
+
+                <button
+                    class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+                    type="submit"
+                >
+                    EN
+                </button>
+
+            </form>
+
+
+            <!-- CTA -->
+
+            <a
+                href="{% url 'contact' %}"
+                class="btn btn-primary nav-cta"
+            >
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    حمایت از جنبش
+                {% else %}
+                    Support the Movement
+                {% endif %}
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}باز کردن منو{% else %}Open menu{% endif %}"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <nav
+                class="mobile-nav"
+                aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی موبایل{% else %}Mobile navigation{% endif %}"
+            >
+
+                <a href="{% url 'home' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}صفحه اصلی{% else %}Home{% endif %}
+                </a>
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}درباره ما{% else %}About Us{% endif %}
+                </a>
+
+               <a href="{% url 'mission_vision' %}" class="active">
+                    {% if request.LANGUAGE_CODE == "fa" %}مأموریت و چشم‌انداز{% else %}Mission & Vision{% endif %}
+                </a>
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اهداف ما{% else %}Our Goals{% endif %}
+                </a>
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}فعالیت‌های ما{% else %}Our Activities{% endif %}
+                </a>
+
+                <a href="{% url 'achievements' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}دستاوردها{% else %}Achievements{% endif %}
+                </a>
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}رهبری{% else %}Leadership{% endif %}
+                </a>
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اخبار{% else %}News{% endif %}
+                </a>
+
+                <a href="{% url 'events' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}رویدادها{% else %}Events{% endif %}
+                </a>
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}مقالات{% else %}Articles{% endif %}
+                </a>
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}گالری{% else %}Gallery{% endif %}
+                </a>
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}تماس{% else %}Contact{% endif %}
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Language -->
+
+            <div class="mobile-language">
+
+                <span>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        زبان
+                    {% else %}
+                        Language
+                    {% endif %}
+                </span>
+
+                <div>
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="fa"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            فارسی
+                        </button>
+
+                    </form>
+
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="en"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            English
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile CTA -->
+
+            <div class="mobile-menu-action">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-primary"
+                >
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        حمایت از جنبش
+                    {% else %}
+                        Support the Movement
+                    {% endif %}
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+<!-- =================================================
+     HERO
+================================================== -->
+
+<section class="mission-hero">
+
+    <div class="container">
+
+        <div class="mission-hero-content">
+
+            <p class="section-kicker">
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.hero_kicker_fa }}
+                {% else %}
+                    {{ mission_vision_settings.hero_kicker_en }}
+                {% endif %}
+            </p>
+
+            <h1>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.hero_title_fa }}
+                    <span>{{ mission_vision_settings.hero_highlight_fa }}</span>
+                {% else %}
+                    {{ mission_vision_settings.hero_title_en }}
+                    <span>{{ mission_vision_settings.hero_highlight_en }}</span>
+                {% endif %}
+            </h1>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.hero_text_fa }}
+                {% else %}
+                    {{ mission_vision_settings.hero_text_en }}
+                {% endif %}
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     MISSION
+================================================== -->
+
+<section class="mission-section">
+
+    <div class="container">
+
+        <div class="mission-grid">
+
+
+            <!-- Mission Image -->
+            <div class="mission-visual">
+
+                <div class="mission-image">
+
+                    {% if mission_vision_settings.mission_image %}
+                        <img
+                            src="{{ mission_vision_settings.mission_image.url }}"
+                            alt="{% if request.LANGUAGE_CODE == 'fa' %}{{ mission_vision_settings.mission_image_alt_fa }}{% else %}{{ mission_vision_settings.mission_image_alt_en }}{% endif %}"
+                        >
+                    {% endif %}
+
+                    <div class="mission-image-badge">
+
+                        <strong>
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ mission_vision_settings.mission_badge_title_fa }}
+                            {% else %}
+                                {{ mission_vision_settings.mission_badge_title_en }}
+                            {% endif %}
+                        </strong>
+
+                        <span>
+                            {% if request.LANGUAGE_CODE == 'fa' %}
+                                {{ mission_vision_settings.mission_badge_text_fa }}
+                            {% else %}
+                                {{ mission_vision_settings.mission_badge_text_en }}
+                            {% endif %}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mission Content -->
+            <div class="mission-content">
+
+                <p class="section-kicker">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.mission_kicker_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.mission_kicker_en }}
+                    {% endif %}
+                </p>
+
+                <h2>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.mission_title_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.mission_title_en }}
+                    {% endif %}
+                </h2>
+
+                <p class="mission-lead">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.mission_lead_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.mission_lead_en }}
+                    {% endif %}
+                </p>
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.mission_text_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.mission_text_en }}
+                    {% endif %}
+                </p>
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.mission_text_2_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.mission_text_2_en }}
+                    {% endif %}
+                </p>
+
+
+                <!-- Mission Points -->
+                <div class="mission-points">
+
+                    {% for point in mission_points %}
+
+                        <div class="mission-point">
+
+                            <span class="mission-point-number">
+                                {{ point.number|stringformat:"02d" }}
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    {% if request.LANGUAGE_CODE == 'fa' %}
+                                        {{ point.title_fa }}
+                                    {% else %}
+                                        {{ point.title_en }}
+                                    {% endif %}
+                                </strong>
+
+                                <p>
+                                    {% if request.LANGUAGE_CODE == 'fa' %}
+                                        {{ point.description_fa }}
+                                    {% else %}
+                                        {{ point.description_en }}
+                                    {% endif %}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     VISION
+================================================== -->
+
+<section class="vision-section">
+
+    <div class="container">
+
+        <div class="vision-inner">
+
+            <div class="vision-content">
+
+                <p class="section-kicker">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.vision_kicker_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.vision_kicker_en }}
+                    {% endif %}
+                </p>
+
+                <h2>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.vision_title_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.vision_title_en }}
+                    {% endif %}
+                </h2>
+
+                <p class="vision-lead">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.vision_lead_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.vision_lead_en }}
+                    {% endif %}
+                </p>
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.vision_text_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.vision_text_en }}
+                    {% endif %}
+                </p>
+
+            </div>
+
+
+            <div class="vision-statement">
+
+                <span class="vision-mark">
+                    “
+                </span>
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.vision_statement_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.vision_statement_en }}
+                    {% endif %}
+                </p>
+
+                <span class="vision-line"></span>
+
+                <strong>
+                    AWMJA
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <!-- =================================================
+     CORE VALUES
+================================================== -->
+
+<section class="values-section">
+
+    <div class="container">
+
+        <div class="section-heading values-heading">
+
+            <div>
+
+                <p class="section-kicker">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        ارزش‌های ما
+                   {% else %}
+    OUR VALUES
+{% endif %}}
+                </p>
+
+                <h2>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        ارزش‌هایی که ما را هدایت می‌کنند
+                    {% else %}
+                        Values That Guide Us
+                    {% endif %}
+                </h2>
+
+            </div>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    فعالیت‌های ما بر پایه اصولی شکل گرفته‌اند
+                    که برای ساختن جامعه‌ای عادلانه و برابر
+                    ضروری هستند.
+                {% else %}
+                    Our work is guided by principles that are
+                    essential to building a just and equal society.
+                {% endif %}
+            </p>
+
+        </div>
+
+
+        <div class="values-grid">
+
+            {% for value in core_values %}
+
+                <article class="value-card">
+
+                    <span class="value-number">
+                        {{ value.number|stringformat:"02d" }}
+                    </span>
+
+                    <div class="value-icon">
+                        {{ value.icon }}
+                    </div>
+
+                    <h3>
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            {{ value.title_fa }}
+                        {% else %}
+                            {{ value.title_en }}
+                        {% endif %}
+                    </h3>
+
+                    <p>
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            {{ value.description_fa }}
+                        {% else %}
+                            {{ value.description_en }}
+                        {% endif %}
+                    </p>
+
+                </article>
+
+            {% empty %}
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در حال حاضر ارزشی ثبت نشده است.
+                    {% else %}
+                        No core values have been added yet.
+                    {% endif %}
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     APPROACH
+================================================== -->
+
+<section class="approach-section">
+
+    <div class="container">
+
+        <div class="section-heading approach-heading">
+
+            <div>
+
+                <p class="section-kicker">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویکرد ما
+                    {% else %}
+                        OUR APPROACH
+                    {% endif %}
+                </p>
+
+                <h2>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        چگونه برای تغییر تلاش می‌کنیم؟
+                    {% else %}
+                        How Do We Work Toward Change?
+                    {% endif %}
+                </h2>
+
+            </div>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    ما تغییر را از آگاهی آغاز می‌کنیم و با
+                    همکاری و دادخواهی آن را به اقدام تبدیل می‌کنیم.
+                {% else %}
+                    We begin with awareness and turn it into action
+                    through collaboration and advocacy.
+                {% endif %}
+            </p>
+
+        </div>
+
+
+        <div class="approach-flow">
+
+            {% for step in approach_steps %}
+
+                <div class="approach-item">
+
+                    <span>
+                        {{ step.number|stringformat:"02d" }}
+                    </span>
+
+                    <strong>
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            {{ step.title_fa }}
+                        {% else %}
+                            {{ step.title_en }}
+                        {% endif %}
+                    </strong>
+
+                    <p>
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            {{ step.description_fa }}
+                        {% else %}
+                            {{ step.description_en }}
+                        {% endif %}
+                    </p>
+
+                </div>
+
+                {% if not forloop.last %}
+                    <div
+                        class="approach-arrow"
+                        aria-hidden="true"
+                    >
+                        ←
+                    </div>
+                {% endif %}
+
+            {% empty %}
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در حال حاضر مرحله‌ای ثبت نشده است.
+                    {% else %}
+                        No approach steps have been added yet.
+                    {% endif %}
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- =================================================
+     FINAL CTA
+================================================== -->
+
+<section class="mission-cta">
+
+    <div class="container">
+
+        <div class="mission-cta-inner">
+
+            <p class="section-kicker">
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.cta_kicker_fa }}
+                {% else %}
+                    {{ mission_vision_settings.cta_kicker_en }}
+                {% endif %}
+            </p>
+
+            <h2>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.cta_title_fa }}
+                {% else %}
+                    {{ mission_vision_settings.cta_title_en }}
+                {% endif %}
+            </h2>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ mission_vision_settings.cta_text_fa }}
+                {% else %}
+                    {{ mission_vision_settings.cta_text_en }}
+                {% endif %}
+            </p>
+
+            <div class="mission-cta-actions">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-primary"
+                >
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.cta_button_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.cta_button_en }}
+                    {% endif %}
+                </a>
+
+                <a
+                    href="{% url 'goals' %}"
+                    class="btn btn-outline"
+                >
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ mission_vision_settings.cta_button_2_fa }}
+                    {% else %}
+                        {{ mission_vision_settings.cta_button_2_en }}
+                    {% endif %}
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+  <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Footer Brand -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="{% static 'assests/images/logo.jpeg' %}"
+                    alt="AWMJA Logo"
+                >
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+
+                    <h3>
+                        جنبش زنان افغانستان
+                        برای عدالت و آگاهی
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        سازمان مستقل و مردمی حقوق بشری
+                        برای دفاع از حقوق زنان و دختران افغانستان.
+                    </p>
+
+                {% else %}
+
+                    <h3>
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        An independent grassroots human rights organization
+                        advocating for the rights of Afghan women and girls.
+                    </p>
+
+                {% endif %}
+
+
+                <!-- Social Media -->
+
+                <div class="socials">
+
+                    <a
+                        href="https://www.facebook.com/share/g/19NBaK5Lbx/?mibextid=wwXIfr"
+                        aria-label="Facebook"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a
+                        href="https://x.com/rasoli_ayoub?s=11"
+                        aria-label="Twitter"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دسترسی سریع
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'home' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        صفحه اصلی
+                    {% else %}
+                        Home
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        درباره ما
+                    {% else %}
+                        About Us
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        فعالیت‌های ما
+                    {% else %}
+                        Our Activities
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رهبری جنبش
+                    {% else %}
+                        Leadership
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اخبار و بیانیه‌ها
+                    {% else %}
+                        News & Statements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'events' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادها
+                    {% else %}
+                        Events
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Organization -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        سازمان
+                    {% else %}
+                        Organization
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'mission_vision' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مأموریت و چشم‌انداز
+                    {% else %}
+                        Mission & Vision
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اهداف ما
+                    {% else %}
+                        Our Goals
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'achievements' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دستاوردها
+                    {% else %}
+                        Achievements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        گالری
+                    {% else %}
+                        Gallery
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مقالات
+                    {% else %}
+                        Articles
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تماس با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="footer-contact">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        ارتباط با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </h4>
+
+
+                <!-- Email -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            EMAIL
+                        </span>
+
+                        <a href="mailto:info@awmja.org">
+                            info@awmja.org
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WhatsApp -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            WHATSAPP
+                        </span>
+
+                        <a
+                            href="https://wa.me/989017923524"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            +98 901 792 3524
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <a href="tel:+989330858940">
+                            +98 933 085 8940
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-map-marker-alt"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            LOCATION
+                        </span>
+
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            <p>
+                                افغانستان · ایران · استرالیا
+                            </p>
+                        {% else %}
+                            <p>
+                                Afghanistan · Iran · Australia
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="footer-bottom-inner">
+
+                <p class="footer-copyright">
+
+                    ©
+                    <span class="current-year"></span>
+
+                    Afghanistan Women’s Movement
+                    for Justice and Awareness.
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تمامی حقوق محفوظ است.
+                    {% else %}
+                        All rights reserved.
+                    {% endif %}
+
+                </p>
+
+
+                <p class="footer-credit">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        طراحی و توسعه توسط
+                    {% else %}
+                        Designed &amp; Developed by
+                    {% endif %}
+
+                    <strong>
+                        Rohullah Sadat
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+    <!-- =====================================================
+         BACK TO TOP
+         ===================================================== -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        type="button"
+        aria-label="بازگشت به بالای صفحه"
+        title="بازگشت به بالا"
+    >
+
+        <i class="fas fa-arrow-up"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <!-- Main Page JS -->
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <!-- Loader JS -->
+    <script src="{% static 'js/loader.js' %}"></script>
+    <!-- Back To Top JS -->
+    <script src="{% static 'js/back-to-top.js' %}"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE }}" dir="{% if request.LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    {% load static %}
+
+    <!-- =========================================
+         SEO
+         ========================================= -->
+
+    <meta
+        name="description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}دستاوردهای جنبش زنان افغانستان برای عدالت و آگاهی؛ مروری بر فعالیت‌ها، اقدامات و نتایج تلاش‌های جنبش در زمینه حقوق زنان، عدالت و آگاهی.{% else %}Explore the achievements of the Afghanistan Women’s Movement for Justice and Awareness (AWMJA) and its efforts to advance women’s rights, justice, awareness, and equality.{% endif %}"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="author"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <!-- Canonical -->
+    <link
+        rel="canonical"
+        href="{{ request.build_absolute_uri }}"
+    >
+
+    <!-- =========================================
+         OPEN GRAPH
+         ========================================= -->
+
+    <meta
+        property="og:title"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}دستاوردهای جنبش | جنبش زنان افغانستان برای عدالت و آگاهی{% else %}Achievements | Afghanistan Women’s Movement for Justice and Awareness{% endif %}"
+    >
+
+    <meta
+        property="og:description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}مروری بر دستاوردها، اقدامات و نتایج تلاش‌های جنبش زنان افغانستان برای عدالت و آگاهی.{% else %}Discover the achievements, actions, and impact of the Afghanistan Women’s Movement for Justice and Awareness.{% endif %}"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.build_absolute_uri }}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}fa_AF{% else %}en_US{% endif %}"
+    >
+
+    <!-- =========================================
+         PAGE TITLE
+         ========================================= -->
+
+    <title>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            دستاوردهای جنبش | جنبش زنان افغانستان برای عدالت و آگاهی
+        {% else %}
+            Achievements | Afghanistan Women’s Movement for Justice and Awareness
+        {% endif %}
+    </title>
+
+    <!-- =========================================
+         FONT AWESOME
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'assests/fontawosem/css/all.min.css' %}"
+    >
+
+    <!-- =========================================
+         GOOGLE FONTS
+         ========================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- =========================================
+         MAIN CSS
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/index.css' %}"
+    >
+
+    <!-- =========================================
+         PAGE CSS
+         ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/achievements.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+   <!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="site-header">
+
+    <div class="container nav-wrap">
+
+        <!-- Brand -->
+
+        <a href="{% url 'home' %}" class="brand">
+
+            <img
+                src="{% static 'assests/images/logo.jpeg' %}"
+                alt="AWMJA Logo"
+            >
+
+            <div class="brand-text">
+
+                <strong>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        {{ settings.site_name_fa }}
+                    {% else %}
+                        {{ settings.site_name_en }}
+                    {% endif %}
+                </strong>
+
+                <span>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        {{ settings.site_name_en }}
+                    {% else %}
+                        {{ settings.site_name_fa }}
+                    {% endif %}
+                </span>
+
+                <small>
+                    AWMJA
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <!-- Desktop Navigation -->
+
+        <nav
+            class="main-nav"
+            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی اصلی{% else %}Main navigation{% endif %}"
+        >
+
+            <a href="{% url 'home' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    صفحه اصلی
+                {% else %}
+                    Home
+                {% endif %}
+            </a>
+
+            <a href="{% url 'about' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    درباره ما
+                {% else %}
+                    About Us
+                {% endif %}
+            </a>
+
+            <a href="{% url 'mission_vision' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مأموریت و چشم‌انداز
+                {% else %}
+                    Mission & Vision
+                {% endif %}
+            </a>
+
+            <a href="{% url 'goals' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اهداف ما
+                {% else %}
+                    Our Goals
+                {% endif %}
+            </a>
+
+            <a href="{% url 'activities' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    فعالیت‌های ما
+                {% else %}
+                    Our Activities
+                {% endif %}
+            </a>
+
+            <a href="{% url 'achievements' %}" class="active">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    دستاوردها
+                {% else %}
+                    Achievements
+                {% endif %}
+            </a>
+
+            <a href="{% url 'leadership' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رهبری
+                {% else %}
+                    Leadership
+                {% endif %}
+            </a>
+
+            <a href="{% url 'news' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    اخبار
+                {% else %}
+                    News
+                {% endif %}
+            </a>
+
+            <a href="{% url 'events' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    رویدادها
+                {% else %}
+                    Events
+                {% endif %}
+            </a>
+
+            <a href="{% url 'articles' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    مقالات
+                {% else %}
+                    Articles
+                {% endif %}
+            </a>
+
+            <a href="{% url 'gallery' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    گالری
+                {% else %}
+                    Gallery
+                {% endif %}
+            </a>
+
+            <a href="{% url 'contact' %}">
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    تماس
+                {% else %}
+                    Contact
+                {% endif %}
+            </a>
+
+        </nav>
+
+
+        <!-- Desktop Actions -->
+
+        <div class="nav-actions">
+
+            <!-- Persian -->
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="language"
+                    value="fa"
+                >
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.path }}"
+                >
+
+                <button
+                    class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+                    type="submit"
+                >
+                    FA
+                </button>
+
+            </form>
+
+
+            <!-- English -->
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="language"
+                    value="en"
+                >
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.path }}"
+                >
+
+                <button
+                    class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+                    type="submit"
+                >
+                    EN
+                </button>
+
+            </form>
+
+
+            <!-- CTA -->
+
+            <a
+                href="{% url 'contact' %}"
+                class="btn btn-primary nav-cta"
+            >
+                {% if request.LANGUAGE_CODE == "fa" %}
+                    حمایت از جنبش
+                {% else %}
+                    Support the Movement
+                {% endif %}
+            </a>
+
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="{% if request.LANGUAGE_CODE == 'fa' %}باز کردن منو{% else %}Open menu{% endif %}"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- Mobile Menu -->
+
+        <div
+            class="mobile-menu"
+            id="mobile-menu"
+        >
+
+            <nav
+                class="mobile-nav"
+                aria-label="{% if request.LANGUAGE_CODE == 'fa' %}منوی موبایل{% else %}Mobile navigation{% endif %}"
+            >
+
+                <a href="{% url 'home' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}صفحه اصلی{% else %}Home{% endif %}
+                </a>
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}درباره ما{% else %}About Us{% endif %}
+                </a>
+
+                <a href="{% url 'mission_vision' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}مأموریت و چشم‌انداز{% else %}Mission & Vision{% endif %}
+                </a>
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اهداف ما{% else %}Our Goals{% endif %}
+                </a>
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}فعالیت‌های ما{% else %}Our Activities{% endif %}
+                </a>
+
+                <a href="{% url 'achievements' %}" class="active">
+                    {% if request.LANGUAGE_CODE == "fa" %}دستاوردها{% else %}Achievements{% endif %}
+                </a>
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}رهبری{% else %}Leadership{% endif %}
+                </a>
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}اخبار{% else %}News{% endif %}
+                </a>
+
+                <a href="{% url 'events' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}رویدادها{% else %}Events{% endif %}
+                </a>
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}مقالات{% else %}Articles{% endif %}
+                </a>
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}گالری{% else %}Gallery{% endif %}
+                </a>
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == "fa" %}تماس{% else %}Contact{% endif %}
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Language -->
+
+            <div class="mobile-language">
+
+                <span>
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        زبان
+                    {% else %}
+                        Language
+                    {% endif %}
+                </span>
+
+                <div>
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="fa"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'fa' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            فارسی
+                        </button>
+
+                    </form>
+
+
+                    <form
+                        action="{% url 'set_language' %}"
+                        method="post"
+                    >
+
+                        {% csrf_token %}
+
+                        <input
+                            type="hidden"
+                            name="language"
+                            value="en"
+                        >
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ request.path }}"
+                        >
+
+                        <button
+                            class="language-btn {% if request.LANGUAGE_CODE == 'en' %}active-lang{% endif %}"
+                            type="submit"
+                        >
+                            English
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mobile CTA -->
+
+            <div class="mobile-menu-action">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-primary"
+                >
+                    {% if request.LANGUAGE_CODE == "fa" %}
+                        حمایت از جنبش
+                    {% else %}
+                        Support the Movement
+                    {% endif %}
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="achievements-page">
+
+
+        <!-- =========================================
+             ACHIEVEMENTS HERO
+             ========================================= -->
+
+        <section class="achievements-hero">
+    <div class="container">
+
+        <div class="achievements-hero-content">
+
+            <p class="section-kicker">
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.hero_kicker_fa }}
+                {% else %}
+                    {{ achievement_settings.hero_kicker_en }}
+                {% endif %}
+            </p>
+
+            <h1>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.hero_title_fa }}
+                    <span>{{ achievement_settings.hero_highlight_fa }}</span>
+                {% else %}
+                    {{ achievement_settings.hero_title_en }}
+                    <span>{{ achievement_settings.hero_highlight_en }}</span>
+                {% endif %}
+            </h1>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.hero_text_fa }}
+                {% else %}
+                    {{ achievement_settings.hero_text_en }}
+                {% endif %}
+            </p>
+
+            <div class="achievements-hero-actions">
+
+                <a href="#achievements-list" class="btn btn-primary">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.hero_button_fa }}
+                    {% else %}
+                        {{ achievement_settings.hero_button_en }}
+                    {% endif %}
+                </a>
+
+                <a href="{% url 'contact' %}" class="btn btn-outline">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.hero_button_2_fa }}
+                    {% else %}
+                        {{ achievement_settings.hero_button_2_en }}
+                    {% endif %}
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Visual / Emblem -->
+        <div class="achievements-hero-visual">
+
+            <!-- این قسمت فعلاً استاتیک می‌ماند -->
+            <!-- چون مربوط به هویت بصری AWMJA است -->
+
+            <!-- کد تصویری فعلی Hero خودت را اینجا نگه دار -->
+
+        </div>
+
+    </div>
+</section>
+
+
+       <section class="impact-intro">
+    <div class="container">
+
+        <div class="impact-intro-content">
+
+            <p class="section-kicker">
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.intro_kicker_fa }}
+                {% else %}
+                    {{ achievement_settings.intro_kicker_en }}
+                {% endif %}
+            </p>
+
+            <h2>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.intro_title_fa }}
+                    <span>{{ achievement_settings.intro_highlight_fa }}</span>
+                {% else %}
+                    {{ achievement_settings.intro_title_en }}
+                    <span>{{ achievement_settings.intro_highlight_en }}</span>
+                {% endif %}
+            </h2>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ achievement_settings.intro_text_fa }}
+                {% else %}
+                    {{ achievement_settings.intro_text_en }}
+                {% endif %}
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+        <!-- =========================================
+             IMPACT NUMBERS
+             ========================================= -->
+
+        <section class="impact-numbers">
+    <div class="container">
+
+        <div class="impact-stats">
+
+            {% for stat in impact_statistics %}
+                <div class="impact-stat">
+
+                    <div class="impact-stat-number">
+                        <span
+                            class="counter"
+                            data-target="{{ stat.number }}"
+                        >
+                            0
+                        </span>{% if stat.suffix %}{{ stat.suffix }}{% endif %}
+                    </div>
+
+                    <p>
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            {{ stat.label_fa }}
+                        {% else %}
+                            {{ stat.label_en }}
+                        {% endif %}
+                    </p>
+
+                </div>
+            {% empty %}
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        در حال حاضر آماری ثبت نشده است.
+                    {% else %}
+                        No statistics have been added yet.
+                    {% endif %}
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+
+
+        <!-- =========================================
+             FEATURED ACHIEVEMENTS
+             ========================================= -->
+
+        <section
+            class="featured-achievements section"
+            id="achievements-list"
+        >
+
+            <div class="container">
+
+
+                <!-- Section Heading -->
+
+                <div class="section-heading achievements-heading">
+<div class="section-heading">
+    <div>
+        <p class="section-kicker">
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.achievements_kicker_fa }}
+            {% else %}
+                {{ achievement_settings.achievements_kicker_en }}
+            {% endif %}
+        </p>
+
+        <h2>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.achievements_title_fa }}
+            {% else %}
+                {{ achievement_settings.achievements_title_en }}
+            {% endif %}
+        </h2>
+    </div>
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            {{ achievement_settings.achievements_text_fa }}
+        {% else %}
+            {{ achievement_settings.achievements_text_en }}
+        {% endif %}
+    </p>
+</div>
+                    </article>
+
+
+                    <!-- Achievement 02 -->
+
+                    {% for achievement in featured_achievements %}
+
+<article
+    class="achievement-card"
+    data-category="{{ achievement.category }}"
+>
+
+    <div class="achievement-card-top">
+
+        <span class="achievement-number">
+            {{ achievement.number|stringformat:"02d" }}
+        </span>
+
+        <span class="achievement-icon">
+            {{ achievement.icon }}
+        </span>
+
+    </div>
+
+
+    <div class="achievement-card-content">
+
+        <span class="achievement-category">
+
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement.category_fa }}
+            {% else %}
+                {{ achievement.category_en }}
+            {% endif %}
+
+        </span>
+
+
+        <h3>
+
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement.title_fa }}
+            {% else %}
+                {{ achievement.title_en }}
+            {% endif %}
+
+        </h3>
+
+
+        <p>
+
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement.description_fa }}
+            {% else %}
+                {{ achievement.description_en }}
+            {% endif %}
+
+        </p>
+
+    </div>
+
+
+    <div class="achievement-card-footer">
+
+        <span>
+            {{ achievement.year }}
+        </span>
+
+        <span>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement.footer_label_fa }}
+            {% else %}
+                {{ achievement.footer_label_en }}
+            {% endif %}
+        </span>
+
+        <span class="achievement-arrow" aria-hidden="true">
+            ↗
+        </span>
+
+    </div>
+
+</article>
+
+{% empty %}
+
+<p>
+    {% if request.LANGUAGE_CODE == 'fa' %}
+        در حال حاضر دستاورد شاخصی ثبت نشده است.
+    {% else %}
+        No featured achievements have been added yet.
+    {% endif %}
+</p>
+
+{% endfor %}
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             ACHIEVEMENT TIMELINE
+             ========================================= -->
+
+        <section class="achievements-timeline-section">
+
+            <div class="container">
+
+
+                <!-- Timeline Heading -->
+
+                <div class="section-heading">
+    <div>
+        <p class="section-kicker">
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.timeline_kicker_fa }}
+            {% else %}
+                {{ achievement_settings.timeline_kicker_en }}
+            {% endif %}
+        </p>
+
+        <h2>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.timeline_title_fa }}
+            {% else %}
+                {{ achievement_settings.timeline_title_en }}
+            {% endif %}
+        </h2>
+    </div>
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            {{ achievement_settings.timeline_text_fa }}
+        {% else %}
+            {{ achievement_settings.timeline_text_en }}
+        {% endif %}
+    </p>
+</div>
+
+
+                <!-- Timeline -->
+
+                <div class="achievements-timeline">
+
+
+                    <!-- 2022 -->
+
+                    {% for item in timeline %}
+    <article class="timeline-item">
+
+        <div class="timeline-year">
+            {{ item.year }}
+        </div>
+
+        <div class="timeline-content">
+
+            <h3>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ item.title_fa }}
+                {% else %}
+                    {{ item.title_en }}
+                {% endif %}
+            </h3>
+
+            <p>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ item.description_fa }}
+                {% else %}
+                    {{ item.description_en }}
+                {% endif %}
+            </p>
+
+        </div>
+
+    </article>
+{% empty %}
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            هنوز موردی برای نمایش ثبت نشده است.
+        {% else %}
+            No timeline items have been added yet.
+        {% endif %}
+    </p>
+
+{% endfor %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             MEDIA & RECOGNITION
+             ========================================= -->
+
+        <section class="achievement-media">
+
+            <div class="container">
+
+                <div class="media-block">
+
+
+                    <!-- Media Content -->
+
+                  <div class="section-heading">
+    <div>
+        <p class="section-kicker">
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.media_kicker_fa }}
+            {% else %}
+                {{ achievement_settings.media_kicker_en }}
+            {% endif %}
+        </p>
+
+        <h2>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.media_title_fa }}
+                <span>{{ achievement_settings.media_highlight_fa }}</span>
+            {% else %}
+                {{ achievement_settings.media_title_en }}
+                <span>{{ achievement_settings.media_highlight_en }}</span>
+            {% endif %}
+        </h2>
+    </div>
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            {{ achievement_settings.media_text_fa }}
+        {% else %}
+            {{ achievement_settings.media_text_en }}
+        {% endif %}
+    </p>
+</div>
+
+                    <!-- Media List -->
+
+                    <div class="media-list">
+
+
+                        <!-- Media 01 -->
+
+                        {% for item in media_items %}
+
+    <a
+        {% if item.url %}
+            href="{{ item.url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+        {% else %}
+            href="#"
+        {% endif %}
+        class="media-recognition-item"
+    >
+
+        <div class="media-recognition-content">
+
+            {% if item.source_fa or item.source_en %}
+                <span class="media-recognition-source">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ item.source_fa }}
+                    {% else %}
+                        {{ item.source_en }}
+                    {% endif %}
+                </span>
+            {% endif %}
+
+            <h3>
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ item.title_fa }}
+                {% else %}
+                    {{ item.title_en }}
+                {% endif %}
+            </h3>
+
+            {% if item.media_type %}
+                <span class="media-recognition-type">
+                    {{ item.media_type }}
+                </span>
+            {% endif %}
+
+        </div>
+
+        <span class="media-recognition-arrow" aria-hidden="true">↗</span>
+
+    </a>
+
+{% empty %}
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            هنوز موردی برای نمایش ثبت نشده است.
+        {% else %}
+            No media items have been added yet.
+        {% endif %}
+    </p>
+
+{% endfor %}
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             EVIDENCE / DOCUMENTS
+             ========================================= -->
+
+        <section class="achievement-evidence">
+
+            <div class="container">
+
+                <div class="evidence-grid">
+
+
+                    <!-- Evidence Content -->
+
+                   <div class="section-heading">
+    <div>
+        <p class="section-kicker">
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.evidence_kicker_fa }}
+            {% else %}
+                {{ achievement_settings.evidence_kicker_en }}
+            {% endif %}
+        </p>
+
+        <h2>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.evidence_title_fa }}
+                <span>{{ achievement_settings.evidence_highlight_fa }}</span>
+            {% else %}
+                {{ achievement_settings.evidence_title_en }}
+                <span>{{ achievement_settings.evidence_highlight_en }}</span>
+            {% endif %}
+        </h2>
+    </div>
+
+    <p>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            {{ achievement_settings.evidence_text_fa }}
+        {% else %}
+            {{ achievement_settings.evidence_text_en }}
+        {% endif %}
+    </p>
+</div>
+
+                   <!-- Evidence Placeholder -->
+
+<div class="evidence-placeholder">
+
+    <div class="evidence-icon">
+        <i class="fas fa-folder-open"></i>
+    </div>
+
+    <div>
+
+        <strong>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                {{ achievement_settings.evidence_title_fa }}
+                {{ achievement_settings.evidence_highlight_fa }}
+            {% else %}
+                {{ achievement_settings.evidence_title_en }}
+                {{ achievement_settings.evidence_highlight_en }}
+            {% endif %}
+        </strong>
+
+        <span>
+            {% if request.LANGUAGE_CODE == 'fa' %}
+                مستندات و گزارش‌ها
+            {% else %}
+                Documents & Reports
+            {% endif %}
+        </span>
+
+    </div>
+
+    <span class="evidence-arrow">
+        ←
+    </span>
+
+</div>
+        </section>
+
+
+
+       <!-- =========================================
+     FINAL CTA
+     ========================================= -->
+
+<section class="achievements-cta">
+
+    <div class="container">
+
+        <div class="achievements-cta-inner">
+
+
+            <!-- CTA Mark -->
+
+            <div class="cta-mark">
+                AWMJA
+            </div>
+
+
+            <!-- CTA Content -->
+
+            <div class="cta-content">
+
+                <p class="section-kicker">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.cta_kicker_fa }}
+                    {% else %}
+                        {{ achievement_settings.cta_kicker_en }}
+                    {% endif %}
+                </p>
+
+                <h2>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.cta_title_fa }}
+                        <span>{{ achievement_settings.cta_highlight_fa }}</span>
+                    {% else %}
+                        {{ achievement_settings.cta_title_en }}
+                        <span>{{ achievement_settings.cta_highlight_en }}</span>
+                    {% endif %}
+                </h2>
+
+                <p>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.cta_text_fa }}
+                    {% else %}
+                        {{ achievement_settings.cta_text_en }}
+                    {% endif %}
+                </p>
+
+            </div>
+
+
+            <!-- CTA Action -->
+
+            <div class="cta-action">
+
+                <a
+                    href="{% url 'contact' %}"
+                    class="btn btn-light"
+                >
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        {{ achievement_settings.cta_button_fa }}
+                    {% else %}
+                        {{ achievement_settings.cta_button_en }}
+                    {% endif %}
+
+                    <span>←</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+
+   
+    <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- Footer Brand -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="{% static 'assests/images/logo.jpeg' %}"
+                    alt="AWMJA Logo"
+                >
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+
+                    <h3>
+                        جنبش زنان افغانستان
+                        برای عدالت و آگاهی
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        سازمان مستقل و مردمی حقوق بشری
+                        برای دفاع از حقوق زنان و دختران افغانستان.
+                    </p>
+
+                {% else %}
+
+                    <h3>
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </h3>
+
+                    <p class="footer-en">
+                        Afghanistan Women’s Movement
+                        for Justice and Awareness
+                    </p>
+
+                    <p>
+                        An independent grassroots human rights organization
+                        advocating for the rights of Afghan women and girls.
+                    </p>
+
+                {% endif %}
+
+
+                <!-- Social Media -->
+
+                <div class="socials">
+
+                    <a
+                        href="https://www.facebook.com/share/g/19NBaK5Lbx/?mibextid=wwXIfr"
+                        aria-label="Facebook"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                    <a
+                        href="https://x.com/rasoli_ayoub?s=11"
+                        aria-label="Twitter"
+                        class="social-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دسترسی سریع
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'home' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        صفحه اصلی
+                    {% else %}
+                        Home
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'about' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        درباره ما
+                    {% else %}
+                        About Us
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'activities' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        فعالیت‌های ما
+                    {% else %}
+                        Our Activities
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'leadership' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رهبری جنبش
+                    {% else %}
+                        Leadership
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'news' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اخبار و بیانیه‌ها
+                    {% else %}
+                        News & Statements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'events' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        رویدادها
+                    {% else %}
+                        Events
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Organization -->
+
+            <div class="footer-links">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        سازمان
+                    {% else %}
+                        Organization
+                    {% endif %}
+                </h4>
+
+
+                <a href="{% url 'mission_vision' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مأموریت و چشم‌انداز
+                    {% else %}
+                        Mission & Vision
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'goals' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        اهداف ما
+                    {% else %}
+                        Our Goals
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'achievements' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        دستاوردها
+                    {% else %}
+                        Achievements
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'gallery' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        گالری
+                    {% else %}
+                        Gallery
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'articles' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        مقالات
+                    {% else %}
+                        Articles
+                    {% endif %}
+                </a>
+
+
+                <a href="{% url 'contact' %}">
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تماس با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </a>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="footer-contact">
+
+                <h4>
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        ارتباط با ما
+                    {% else %}
+                        Contact Us
+                    {% endif %}
+                </h4>
+
+
+                <!-- Email -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            EMAIL
+                        </span>
+
+                        <a href="mailto:info@awmja.org">
+                            info@awmja.org
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WhatsApp -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            WHATSAPP
+                        </span>
+
+                        <a
+                            href="https://wa.me/989017923524"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            +98 901 792 3524
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            PHONE
+                        </span>
+
+                        <a href="tel:+989330858940">
+                            +98 933 085 8940
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fa fa-map-marker-alt"></i>
+                    </div>
+
+                    <div class="contact-content">
+
+                        <span>
+                            LOCATION
+                        </span>
+
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            <p>
+                                افغانستان · ایران · استرالیا
+                            </p>
+                        {% else %}
+                            <p>
+                                Afghanistan · Iran · Australia
+                            </p>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="footer-bottom-inner">
+
+                <p class="footer-copyright">
+
+                    ©
+                    <span class="current-year"></span>
+
+                    Afghanistan Women’s Movement
+                    for Justice and Awareness.
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        تمامی حقوق محفوظ است.
+                    {% else %}
+                        All rights reserved.
+                    {% endif %}
+
+                </p>
+
+
+                <p class="footer-credit">
+
+                    {% if request.LANGUAGE_CODE == 'fa' %}
+                        طراحی و توسعه توسط
+                    {% else %}
+                        Designed &amp; Developed by
+                    {% endif %}
+
+                    <strong>
+                        Rohullah Sadat
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+    <!-- =====================================================
+         BACK TO TOP
+         ===================================================== -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        type="button"
+        aria-label="بازگشت به بالای صفحه"
+        title="بازگشت به بالا"
+    >
+
+        <i class="fas fa-arrow-up"></i>
+
+    </button>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <!-- Main Page JS -->
+    <script src="{% static 'js/index.js' %}"></script>
+
+    <!-- Loader JS -->
+    <script src="{% static 'js/loader.js' %}"></script>
+    <!-- Back To Top JS -->
+    <script src="{% static 'js/back-to-top.js' %}"></script>
+</body>
+
+</html>

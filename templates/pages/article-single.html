@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE }}" dir="{% if request.LANGUAGE_CODE == 'fa' %}rtl{% else %}ltr{% endif %}">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    {% load static %}
+
+    <!-- =====================================================
+         SEO
+    ====================================================== -->
+
+    <meta
+        name="description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}{{ article.excerpt_fa|default:article.title_fa }}{% else %}{{ article.excerpt_en|default:article.title_en }}{% endif %}"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <meta
+        name="author"
+        content="{% if article.source_name %}{{ article.source_name }}{% else %}Afghanistan Women’s Movement for Justice and Awareness{% endif %}"
+    >
+
+    <!-- Canonical -->
+    <link
+        rel="canonical"
+        href="{{ request.build_absolute_uri }}"
+    >
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+        property="og:title"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}{{ article.title_fa }}{% else %}{{ article.title_en|default:article.title_fa }}{% endif %}"
+    >
+
+    <meta
+        property="og:description"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}{{ article.excerpt_fa|default:article.title_fa }}{% else %}{{ article.excerpt_en|default:article.title_en|default:article.title_fa }}{% endif %}"
+    >
+
+    <meta
+        property="og:type"
+        content="article"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ request.build_absolute_uri }}"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Afghanistan Women’s Movement for Justice and Awareness"
+    >
+
+    <meta
+        property="og:locale"
+        content="{% if request.LANGUAGE_CODE == 'fa' %}fa_AF{% else %}en_US{% endif %}"
+    >
+
+    {% if article.image %}
+        <meta
+            property="og:image"
+            content="{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}"
+        >
+    {% endif %}
+
+    {% if article.published_at %}
+        <meta
+            property="article:published_time"
+            content="{{ article.published_at|date:'c' }}"
+        >
+    {% endif %}
+
+    {% if article.source_name %}
+        <meta
+            property="article:author"
+            content="{{ article.source_name }}"
+        >
+    {% endif %}
+
+    <!-- =====================================================
+         PAGE TITLE
+    ====================================================== -->
+
+    <title>
+        {% if request.LANGUAGE_CODE == 'fa' %}
+            {{ article.title_fa }} | AWMJA
+        {% else %}
+            {{ article.title_en|default:article.title_fa }} | AWMJA
+        {% endif %}
+    </title>
+    <!-- =========================
+     Schema.org — Article
+========================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "{{ request.build_absolute_uri }}#article",
+
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  },
+
+  "headline": "{% if request.LANGUAGE_CODE == 'fa' %}{{ article.title_fa|escapejs }}{% else %}{{ article.title_en|default:article.title_fa|escapejs }}{% endif %}",
+
+  "description": "{% if request.LANGUAGE_CODE == 'fa' %}{{ article.excerpt_fa|default:article.title_fa|escapejs }}{% else %}{{ article.excerpt_en|default:article.title_en|default:article.title_fa|escapejs }}{% endif %}",
+
+  {% if article.image %}
+  "image": [
+    "{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}"
+  ],
+  {% endif %}
+
+  {% if article.published_at %}
+  "datePublished": "{{ article.published_at|date:'Y-m-d' }}",
+  {% endif %}
+
+  "dateModified": "{{ article.updated_at|date:'c' }}",
+
+  "publisher": {
+  "@type": "Organization",
+  "@id": "{{ request.scheme }}://{{ request.get_host }}/#organization",
+  "name": "Afghanistan Women’s Movement for Justice and Awareness",
+  "url": "{{ request.scheme }}://{{ request.get_host }}/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'assests/images/logo.jpeg' %}"
+  }
+}
+}
+</script>
+
+<!-- =====================================================
+     Schema.org — BreadcrumbList
+====================================================== -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{% if request.LANGUAGE_CODE == 'fa' %}خانه{% else %}Home{% endif %}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{% if request.LANGUAGE_CODE == 'fa' %}مقالات{% else %}Articles{% endif %}",
+      "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'articles' %}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{% if request.LANGUAGE_CODE == 'fa' %}{{ article.title_fa|escapejs }}{% else %}{{ article.title_en|default:article.title_fa|escapejs }}{% endif %}",
+      "item": "{{ request.build_absolute_uri }}"
+    }
+  ]
+}
+</script>
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'assests/fontawosem/css/all.min.css' %}"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/index.css' %}"
+    >
+
+
+    <!-- =====================================================
+         LOADER CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/loader.css' %}"
+    >
+
+
+    <!-- =====================================================
+         ARTICLE SINGLE CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/article-single.css' %}"
+    >
+
+</head>
+
+
+<body>
+<main class="article-single-page">
+
+    <section class="article-single-hero">
+
+        <div class="container">
+
+            <span class="section-kicker">
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ article.category_fa }}
+                {% else %}
+                    {{ article.category_en }}
+                {% endif %}
+
+            </span>
+
+
+            <h1>
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+                    {{ article.title_fa }}
+                {% else %}
+                    {{ article.title_en }}
+                {% endif %}
+
+            </h1>
+
+
+            <div class="article-meta">
+
+                {% if article.published_at %}
+                    <span>
+                        {{ article.published_at|date:"Y/m/d" }}
+                    </span>
+                {% endif %}
+
+
+                {% if article.source_name %}
+                    <span>
+                        {{ article.source_name }}
+                    </span>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="article-single-content">
+
+        <div class="container">
+
+            {% if article.image %}
+
+                <div class="article-single-image">
+
+                    <img
+                        src="{{ article.image.url }}"
+                        alt="{% if request.LANGUAGE_CODE == 'fa' %}{{ article.image_alt_fa }}{% else %}{{ article.image_alt_en }}{% endif %}"
+                    >
+
+                </div>
+
+            {% endif %}
+
+
+            <article class="article-content">
+
+                {% if request.LANGUAGE_CODE == 'fa' %}
+
+                    {% if article.content_fa %}
+
+                        {{ article.content_fa|linebreaks }}
+
+                    {% else %}
+
+                        <p>
+                            محتوای کامل این مقاله هنوز منتشر نشده است.
+                        </p>
+
+                    {% endif %}
+
+                {% else %}
+
+                    {% if article.content_en %}
+
+                        {{ article.content_en|linebreaks }}
+
+                    {% else %}
+
+                        <p>
+                            The full content of this article has not been published yet.
+                        </p>
+
+                    {% endif %}
+
+                {% endif %}
+
+            </article>
+
+
+            {% if article.source_url %}
+
+                <div class="article-source">
+
+                    <a
+                        href="{{ article.source_url }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        {% if request.LANGUAGE_CODE == 'fa' %}
+                            منبع مقاله
+                        {% else %}
+                            Article Source
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

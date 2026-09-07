@@ -1,0 +1,1027 @@
+
+/* =========================================================
+   AWMJA — GOALS PAGE
+   goals.css
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE VARIABLES
+   ========================================================= */
+
+:root {
+
+    --goals-navy: #102a43;
+    --goals-navy-dark: #081c2d;
+
+    --goals-gold: #c9a227;
+    --goals-gold-light: #e4c766;
+
+    --goals-red: #9f2d2d;
+
+    --goals-text: #263746;
+    --goals-muted: #64748b;
+
+    --goals-bg: #f7f8fa;
+    --goals-white: #ffffff;
+
+    --goals-border: rgba(16, 42, 67, 0.10);
+
+    --goals-shadow:
+        0 15px 40px rgba(16, 42, 67, 0.08);
+
+    --goals-shadow-hover:
+        0 25px 55px rgba(16, 42, 67, 0.14);
+
+    --goals-radius: 18px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.goals-hero {
+
+    position: relative;
+
+    padding: 125px 0 105px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b2238 0%,
+            #102f4a 55%,
+            #173d59 100%
+        );
+
+    color: var(--goals-white);
+}
+
+
+/* Decorative glow */
+
+.goals-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -220px;
+    right: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201, 162, 39, 0.22),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+.goals-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    bottom: -180px;
+    left: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.07),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Hero content */
+
+.goals-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 780px;
+
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+
+.goals-hero .section-kicker {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: var(--goals-gold-light);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+.goals-hero h1 {
+
+    margin: 0 0 25px;
+
+    color: #ffffff;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+    font-weight: 800;
+
+    line-height: 1.15;
+}
+
+
+.goals-hero-content > p:last-child {
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    font-size: 1.08rem;
+
+    line-height: 2.1;
+}
+
+
+/* =========================================================
+   MAIN GOALS SECTION
+   ========================================================= */
+
+.goals-section {
+
+    padding: 110px 0;
+
+    background: var(--goals-bg);
+}
+
+
+/* Section heading */
+
+.goals-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 60px;
+
+    margin-bottom: 60px;
+}
+
+
+.goals-heading h2 {
+
+    margin: 10px 0 0;
+
+    color: var(--goals-navy);
+
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+
+.goals-heading > p {
+
+    max-width: 480px;
+
+    margin: 0;
+
+    color: var(--goals-muted);
+
+    font-size: 1rem;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   GOALS GRID
+   ========================================================= */
+
+.goals-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   GOAL CARD
+   ========================================================= */
+
+.goal-card {
+
+    position: relative;
+
+    min-height: 355px;
+
+    padding: 34px 30px;
+
+    overflow: hidden;
+
+    background: var(--goals-white);
+
+    border: 1px solid var(--goals-border);
+
+    border-radius: var(--goals-radius);
+
+    box-shadow: var(--goals-shadow);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Top line */
+
+.goal-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    left: 0;
+
+    height: 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--goals-gold),
+            var(--goals-gold-light)
+        );
+
+    transform: scaleX(0);
+
+    transform-origin: right;
+
+    transition: transform 0.4s ease;
+}
+
+
+.goal-card:hover {
+
+    transform: translateY(-9px);
+
+    border-color:
+        rgba(201, 162, 39, 0.25);
+
+    box-shadow: var(--goals-shadow-hover);
+}
+
+
+.goal-card:hover::before {
+
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.goal-number {
+
+    position: absolute;
+
+    top: 24px;
+    left: 26px;
+
+    color:
+        rgba(16, 42, 67, 0.07);
+
+    font-size: 3.5rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.goal-icon {
+
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    border-radius: 16px;
+
+    background:
+        rgba(201, 162, 39, 0.10);
+
+    color: var(--goals-gold);
+
+    font-size: 1.45rem;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.goal-card:hover .goal-icon {
+
+    background: var(--goals-navy);
+
+    color: #ffffff;
+
+    transform: scale(1.06);
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.goal-content {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.goal-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--goals-gold);
+
+    font-size: 0.7rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+
+.goal-content h3 {
+
+    margin: 0 0 15px;
+
+    color: var(--goals-navy);
+
+    font-size: 1.25rem;
+
+    font-weight: 800;
+
+    line-height: 1.55;
+}
+
+
+.goal-content p {
+
+    margin: 0;
+
+    color: var(--goals-muted);
+
+    font-size: 0.93rem;
+
+    line-height: 2;
+
+}
+
+
+/* =========================================================
+   COMMITMENT / STATEMENT
+   ========================================================= */
+
+.goals-statement {
+
+    padding: 100px 0;
+
+    background: #ffffff;
+}
+
+
+.goals-statement-inner {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr;
+
+    align-items: center;
+
+    gap: 65px;
+
+    padding: 65px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #102a43,
+            #173e5c
+        );
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 60px rgba(16, 42, 67, 0.15);
+
+    color: #ffffff;
+}
+
+
+/* Decorative background */
+
+.goals-statement-inner::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -180px;
+    bottom: -250px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(201, 162, 39, 0.10);
+}
+
+
+/* AWMJA mark */
+
+.goals-statement-mark {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 155px;
+    height: 155px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid
+        rgba(201, 162, 39, 0.55);
+
+    border-radius: 50%;
+
+    color: var(--goals-gold-light);
+
+    font-size: 1.25rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    box-shadow:
+        inset 0 0 0 10px
+        rgba(255, 255, 255, 0.025);
+}
+
+
+.goals-statement-content {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.goals-statement-content .section-kicker {
+
+    margin-bottom: 15px;
+
+    color: var(--goals-gold-light);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+
+.goals-statement-content h2 {
+
+    max-width: 700px;
+
+    margin: 0 0 20px;
+
+    color: #ffffff;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+
+    font-weight: 800;
+
+    line-height: 1.4;
+}
+
+
+.goals-statement-content h2 span {
+
+    display: block;
+
+    color: var(--goals-gold-light);
+}
+
+
+.goals-statement-content > p:last-child {
+
+    max-width: 680px;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 1rem;
+
+    line-height: 2.1;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.goals-cta {
+
+    padding: 90px 0;
+
+    background: var(--goals-bg);
+}
+
+
+.goals-cta-inner {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    padding: 55px 65px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--goals-border);
+
+    border-radius: 20px;
+
+    box-shadow: var(--goals-shadow);
+}
+
+
+.goals-cta-inner .section-kicker {
+
+    margin-bottom: 12px;
+
+    color: var(--goals-gold);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+
+.goals-cta-inner h2 {
+
+    margin: 0;
+
+    color: var(--goals-navy);
+
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+
+    font-weight: 800;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+   ========================================================= */
+
+.goals-cta-inner .btn {
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    min-width: 190px;
+
+    padding: 15px 28px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.goals-cta-inner .btn:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 25px rgba(16, 42, 67, 0.15);
+}
+
+
+.goals-cta-inner .btn span {
+
+    font-size: 1.1rem;
+
+    transition: transform 0.3s ease;
+}
+
+
+.goals-cta-inner .btn:hover span {
+
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .goals-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .goals-hero {
+
+        padding: 100px 0 85px;
+    }
+
+
+    .goals-section {
+
+        padding: 85px 0;
+    }
+
+
+    .goals-heading {
+
+        display: block;
+
+        margin-bottom: 45px;
+    }
+
+
+    .goals-heading > p {
+
+        margin-top: 20px;
+
+        max-width: 650px;
+    }
+
+
+    .goals-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+
+    .goals-statement {
+
+        padding: 75px 0;
+    }
+
+
+    .goals-statement-inner {
+
+        grid-template-columns: 130px 1fr;
+
+        gap: 40px;
+
+        padding: 45px;
+    }
+
+
+    .goals-statement-mark {
+
+        width: 120px;
+        height: 120px;
+
+        font-size: 1rem;
+    }
+
+
+    .goals-cta {
+
+        padding: 70px 0;
+    }
+
+
+    .goals-cta-inner {
+
+        padding: 45px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .goals-hero {
+
+        padding: 80px 0 70px;
+    }
+
+
+    .goals-hero h1 {
+
+        font-size: 2.5rem;
+    }
+
+
+    .goals-hero-content > p:last-child {
+
+        font-size: 0.95rem;
+
+        line-height: 1.9;
+    }
+
+
+    .goals-section {
+
+        padding: 65px 0;
+    }
+
+
+    .goals-heading h2 {
+
+        font-size: 2rem;
+    }
+
+
+    .goals-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .goal-card {
+
+        min-height: auto;
+
+        padding: 30px 25px;
+    }
+
+
+    .goal-number {
+
+        top: 20px;
+        left: 20px;
+
+        font-size: 3rem;
+    }
+
+
+    .goal-icon {
+
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .goal-content h3 {
+
+        font-size: 1.15rem;
+    }
+
+
+    .goal-content p {
+
+        font-size: 0.92rem;
+
+        line-height: 1.9;
+    }
+
+
+    .goals-statement {
+
+        padding: 60px 0;
+    }
+
+
+    .goals-statement-inner {
+
+        display: block;
+
+        padding: 38px 28px;
+
+        border-radius: 18px;
+    }
+
+
+    .goals-statement-mark {
+
+        width: 90px;
+        height: 90px;
+
+        margin-bottom: 30px;
+
+        font-size: 0.85rem;
+    }
+
+
+    .goals-statement-content h2 {
+
+        font-size: 1.9rem;
+    }
+
+
+    .goals-statement-content > p:last-child {
+
+        font-size: 0.92rem;
+
+        line-height: 1.95;
+    }
+
+
+    .goals-cta {
+
+        padding: 55px 0;
+    }
+
+
+    .goals-cta-inner {
+
+        padding: 35px 25px;
+
+        gap: 30px;
+    }
+
+
+    .goals-cta-inner h2 {
+
+        font-size: 1.8rem;
+    }
+
+
+    .goals-cta-inner .btn {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .goals-hero h1 {
+
+        font-size: 2.15rem;
+    }
+
+
+    .goals-heading h2 {
+
+        font-size: 1.75rem;
+    }
+
+
+    .goal-card {
+
+        padding: 26px 22px;
+    }
+
+
+    .goals-statement-inner {
+
+        padding: 32px 22px;
+    }
+
+
+    .goals-statement-content h2 {
+
+        font-size: 1.65rem;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .goal-card,
+    .goal-card::before,
+    .goal-icon,
+    .goals-cta-inner .btn,
+    .goals-cta-inner .btn span {
+
+        transition: none;
+    }
+
+}

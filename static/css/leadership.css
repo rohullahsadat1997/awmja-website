@@ -1,0 +1,1281 @@
+
+/* =========================================================
+   AWMJA — LEADERSHIP PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+.leadership-hero,
+.leadership-intro,
+.main-leader,
+.leadership-team,
+.leadership-message,
+.leadership-values,
+.leadership-cta {
+    position: relative;
+}
+
+.leadership-hero .container,
+.leadership-intro .container,
+.main-leader .container,
+.leadership-team .container,
+.leadership-message .container,
+.leadership-values .container,
+.leadership-cta .container {
+    width: min(1180px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   LEADERSHIP HERO
+   ========================================================= */
+
+.leadership-hero {
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(166, 32, 55, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #151515 0%,
+            #202020 55%,
+            #111111 100%
+        );
+
+    color: #fff;
+
+    overflow: hidden;
+}
+
+
+.leadership-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 50%;
+
+    left: -160px;
+    bottom: -200px;
+}
+
+
+.leadership-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border: 1px solid rgba(255,255,255,0.06);
+
+    border-radius: 50%;
+
+    right: -100px;
+    top: -120px;
+}
+
+
+.leadership-hero-inner {
+    max-width: 850px;
+
+    padding: 90px 0 85px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.leadership-kicker {
+    margin: 0 0 24px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #d49a58;
+}
+
+
+.leadership-hero h1 {
+    margin: 0;
+
+    font-size: clamp(48px, 6vw, 82px);
+
+    line-height: 1.15;
+
+    font-weight: 800;
+
+    letter-spacing: -2px;
+}
+
+
+.leadership-hero h1 span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #d49a58;
+}
+
+
+.leadership-hero-text {
+    max-width: 720px;
+
+    margin: 30px 0 0;
+
+    color: rgba(255,255,255,0.76);
+
+    font-size: 18px;
+
+    line-height: 2;
+
+}
+
+
+.leadership-hero-line {
+    width: 90px;
+    height: 3px;
+
+    margin-top: 35px;
+
+    background: #a62037;
+}
+
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.leadership-intro {
+    padding: 100px 0 80px;
+
+    background: #fff;
+}
+
+
+.leadership-intro-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 90px;
+
+    align-items: start;
+}
+
+
+.leadership-label,
+.leadership-section-heading > span,
+.leadership-values-heading > span {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    color: #a62037;
+}
+
+
+.leadership-intro-title h2 {
+    margin: 0;
+
+    max-width: 520px;
+
+    font-size: clamp(36px, 4vw, 58px);
+
+    line-height: 1.35;
+
+    color: #171717;
+}
+
+
+.leadership-intro-title h2 span {
+    color: #a62037;
+}
+
+
+.leadership-intro-text {
+    padding-top: 15px;
+}
+
+
+.leadership-intro-text p {
+    margin: 0 0 22px;
+
+    color: #5b5b5b;
+
+    font-size: 17px;
+
+    line-height: 2.15;
+}
+
+
+
+/* =========================================================
+   MAIN LEADER
+   ========================================================= */
+
+.main-leader {
+    padding: 30px 0 110px;
+
+    background: #fff;
+}
+
+
+.main-leader-card {
+    display: grid;
+
+    grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+
+    min-height: 620px;
+
+    background: #171717;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.13);
+}
+
+
+
+/* Leader image */
+
+.main-leader-image {
+    position: relative;
+
+    min-height: 620px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #292929,
+            #111
+        );
+
+    overflow: hidden;
+}
+
+
+.main-leader-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    transition: transform 0.7s ease;
+}
+
+
+.main-leader-card:hover .main-leader-image img {
+    transform: scale(1.035);
+}
+
+
+.main-leader-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(0,0,0,0.65) 100%
+        );
+}
+
+
+.main-leader-image-overlay {
+    position: absolute;
+
+    z-index: 2;
+
+    bottom: 35px;
+    right: 35px;
+
+    padding: 12px 18px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    background: rgba(0,0,0,0.35);
+
+    backdrop-filter: blur(8px);
+}
+
+
+.main-leader-image-overlay span {
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+}
+
+
+
+/* Leader content */
+
+.main-leader-content {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 70px 75px;
+
+    color: #fff;
+}
+
+
+.main-leader-kicker {
+    display: inline-block;
+
+    margin-bottom: 20px;
+
+    color: #d49a58;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+}
+
+
+.main-leader-name {
+    margin: 0;
+
+    font-size: clamp(34px, 4vw, 52px);
+
+    line-height: 1.25;
+
+    color: #fff;
+
+    font-weight: 800;
+}
+
+
+.main-leader-role {
+    margin: 14px 0 0;
+
+    color: rgba(255,255,255,0.72);
+
+    font-size: 17px;
+
+    line-height: 1.9;
+}
+
+
+.main-leader-divider {
+    width: 70px;
+    height: 3px;
+
+    margin: 30px 0;
+
+    background: #a62037;
+}
+
+
+.main-leader-bio {
+    max-width: 650px;
+
+    margin: 0 0 18px;
+
+    color: rgba(255,255,255,0.70);
+
+    font-size: 16px;
+
+    line-height: 2.05;
+}
+
+
+
+/* Details */
+
+.leader-details {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    margin-top: 28px;
+
+    background: rgba(255,255,255,0.12);
+}
+
+
+.leader-detail {
+    padding: 18px 16px;
+
+    background: #171717;
+}
+
+
+.leader-detail span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #999;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.leader-detail strong {
+    display: block;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+
+/* Social */
+
+.main-leader-socials {
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 28px;
+}
+
+
+.main-leader-socials a {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    color: #fff;
+
+    text-decoration: none;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.main-leader-socials a:hover {
+    background: #a62037;
+
+    border-color: #a62037;
+
+    transform: translateY(-3px);
+}
+
+
+
+/* =========================================================
+   LEADERSHIP TEAM
+   ========================================================= */
+
+.leadership-team {
+    padding: 110px 0;
+
+    background: #f5f3f0;
+}
+
+
+.leadership-section-heading {
+    max-width: 720px;
+
+    margin-bottom: 55px;
+}
+
+
+.leadership-section-heading h2,
+.leadership-values-heading h2 {
+    margin: 0 0 20px;
+
+    color: #171717;
+
+    font-size: clamp(36px, 4vw, 52px);
+
+    line-height: 1.35;
+}
+
+
+.leadership-section-heading p,
+.leadership-values-heading p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 20px;
+
+    line-height: 2;
+}
+
+
+
+/* Team grid */
+
+.leadership-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.leader-card {
+    background: #fff;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.06);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.leader-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.12);
+}
+
+
+
+/* Team image */
+
+.leader-image {
+    position: relative;
+
+    height: 400px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #dedbd7,
+            #bdb9b4
+        );
+
+    overflow: hidden;
+}
+
+
+.leader-image img {
+    width: 100%;
+    height: 100%;
+    
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+
+.leader-card:hover .leader-image img {
+    transform: scale(1.04);
+}
+
+
+.leader-number {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    z-index: 2;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(23,23,23,0.85);
+
+    color: #fff;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+
+/* Team content */
+
+.leader-content {
+    padding: 28px 28px 32px;
+}
+
+
+.leader-role {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #a62037;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+
+.leader-name {
+    margin: 0 0 14px;
+
+    color: #171717;
+
+    font-size: 24px;
+
+    line-height: 1.5;
+}
+
+
+.leader-bio {
+    margin: 0;
+
+    color: #6b6b6b;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+
+
+/* =========================================================
+   LEADERSHIP MESSAGE
+   ========================================================= */
+
+.leadership-message {
+    padding: 120px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a62037,
+            #74192a
+        );
+
+    color: #fff;
+
+    overflow: hidden;
+}
+
+
+.leadership-message::before {
+    content: "“";
+
+    position: absolute;
+
+    left: 7%;
+
+    top: -50px;
+
+    color: rgba(255,255,255,0.08);
+
+    font-size: 300px;
+
+    line-height: 1;
+
+    font-family: Georgia, serif;
+}
+
+
+.leadership-message-inner {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin-inline: auto;
+
+    text-align: center;
+}
+
+
+.leadership-message-label {
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.75);
+}
+
+
+.leadership-message blockquote {
+    margin: 0;
+
+    font-size: clamp(28px, 4vw, 48px);
+
+    font-weight: 700;
+
+    line-height: 1.7;
+}
+
+
+.leadership-message-author {
+    margin: 32px 0 0;
+
+    color: rgba(255,255,255,0.72);
+
+    font-size: 15px;
+}
+
+
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.leadership-values {
+    padding: 110px 0;
+
+    background: #fff;
+}
+
+
+.leadership-values-heading {
+    max-width: 700px;
+
+    margin-bottom: 55px;
+}
+
+
+.leadership-values-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.leadership-value {
+    position: relative;
+
+    padding: 38px 32px 40px;
+
+    border-top: 3px solid #a62037;
+
+    background: #f7f6f4;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.leadership-value:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.08);
+}
+
+
+.leadership-value-number {
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #c8c5c0;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.leadership-value h3 {
+    margin: 0 0 15px;
+
+    color: #171717;
+
+    font-size: 27px;
+}
+
+
+.leadership-value p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 15px;
+
+    line-height: 2;
+}
+
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.leadership-cta {
+    padding: 90px 0;
+
+    background: #171717;
+
+    color: #fff;
+}
+
+
+.leadership-cta-inner {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+.leadership-cta-content {
+    max-width: 700px;
+}
+
+
+.leadership-cta-content > span {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #d49a58;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+}
+
+
+.leadership-cta-content h2 {
+    margin: 0 0 15px;
+
+    color: #fff;
+
+    font-size: clamp(32px, 4vw, 48px);
+
+    line-height: 1.4;
+}
+
+
+.leadership-cta-content p {
+    margin: 0;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 16px;
+
+    line-height: 1.9;
+}
+
+
+.leadership-cta-actions {
+    display: flex;
+
+    gap: 12px;
+
+    flex-shrink: 0;
+}
+
+
+.leadership-cta-actions .btn {
+    min-width: 145px;
+
+    text-align: center;
+}
+
+
+
+/* =========================================================
+   BUTTON FALLBACK
+   اگر btn ها در CSS اصلی سایت هستند، این بخش
+   با آنها تداخل جدی ندارد.
+   ========================================================= */
+
+.leadership-cta .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 12px 24px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: all 0.25s ease;
+}
+
+
+.leadership-cta .btn-primary {
+    background: #a62037;
+
+    color: #fff;
+}
+
+
+.leadership-cta .btn-primary:hover {
+    background: #8b1b30;
+
+    transform: translateY(-2px);
+}
+
+
+.leadership-cta .btn-outline {
+    border: 1px solid rgba(255,255,255,0.35);
+
+    color: #fff;
+}
+
+
+.leadership-cta .btn-outline:hover {
+    border-color: #fff;
+
+    background: rgba(255,255,255,0.08);
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1050px) {
+
+    .main-leader-content {
+        padding: 55px 45px;
+    }
+
+    .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leader-image {
+        height: 330px;
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .leadership-intro-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+
+    .main-leader-card {
+        grid-template-columns: 1fr;
+    }
+
+
+    .main-leader-image {
+        min-height: 520px;
+
+        max-height: 600px;
+    }
+
+
+    .main-leader-content {
+        padding: 50px 40px;
+    }
+
+
+    .leadership-cta-inner {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .leadership-hero .container,
+    .leadership-intro .container,
+    .main-leader .container,
+    .leadership-team .container,
+    .leadership-message .container,
+    .leadership-values .container,
+    .leadership-cta .container {
+        width: min(100% - 32px, 1180px);
+    }
+
+
+    .leadership-hero {
+        min-height: auto;
+    }
+
+
+    .leadership-hero-inner {
+        padding: 75px 0;
+    }
+
+
+    .leadership-hero h1 {
+        font-size: 44px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .leadership-hero-text {
+        font-size: 16px;
+
+        line-height: 2;
+    }
+
+
+    .leadership-intro {
+        padding: 75px 0 50px;
+    }
+
+
+    .leadership-intro-title h2 {
+        font-size: 36px;
+    }
+
+
+    .main-leader {
+        padding: 20px 0 75px;
+    }
+
+
+    .main-leader-image {
+        min-height: 420px;
+    }
+
+
+    .main-leader-content {
+        padding: 40px 25px;
+    }
+
+
+    .main-leader-name {
+        font-size: 34px;
+    }
+
+
+    .main-leader-bio {
+        font-size: 15px;
+
+        line-height: 2;
+    }
+
+
+    .leader-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    .leadership-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+
+    .leader-image {
+        height: 390px;
+    }
+
+
+    .leadership-team,
+    .leadership-values {
+        padding: 75px 0;
+    }
+
+
+    .leadership-section-heading h2,
+    .leadership-values-heading h2 {
+        font-size: 36px;
+    }
+
+
+    .leadership-message {
+        padding: 85px 0;
+    }
+
+
+    .leadership-message blockquote {
+        font-size: 27px;
+
+        line-height: 1.8;
+    }
+
+
+    .leadership-values-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .leadership-cta {
+        padding: 70px 0;
+    }
+
+
+    .leadership-cta-content h2 {
+        font-size: 34px;
+    }
+
+
+    .leadership-cta-actions {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+
+    .leadership-cta-actions .btn {
+        width: 100%;
+    }
+
+}
+
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .leadership-hero h1 {
+        font-size: 38px;
+    }
+
+
+    .leadership-kicker {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .main-leader-image {
+        min-height: 360px;
+    }
+
+
+    .main-leader-content {
+        padding: 35px 20px;
+    }
+
+
+    .main-leader-name {
+        font-size: 30px;
+    }
+
+
+    .main-leader-role {
+        font-size: 15px;
+    }
+
+
+    .leader-image {
+        height: 340px;
+    }
+
+
+    .leader-content {
+        padding: 24px 22px 28px;
+    }
+
+
+    .leadership-message blockquote {
+        font-size: 24px;
+    }
+
+}

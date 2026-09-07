@@ -1,0 +1,1460 @@
+
+/* =========================================================
+   AWMJA — EVENTS PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   01. VARIABLES
+   ========================================================= */
+
+:root {
+
+    --events-primary: #8f1d2c;
+    --events-primary-dark: #68131f;
+    --events-accent: #b8894b;
+
+    --events-dark: #171717;
+    --events-dark-soft: #242424;
+
+    --events-text: #252525;
+    --events-muted: #747474;
+
+    --events-light: #f7f5f1;
+    --events-white: #ffffff;
+
+    --events-border: #e8e4de;
+
+    --events-shadow:
+        0 18px 50px rgba(20, 20, 20, 0.08);
+
+    --events-radius: 18px;
+
+}
+
+
+/* =========================================================
+   02. RESET / BASE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        "Vazirmatn",
+        "Tahoma",
+        sans-serif;
+
+    color: var(--events-text);
+    background: var(--events-white);
+
+    line-height: 1.9;
+
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(1180px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   03. COMMON TYPOGRAPHY
+   ========================================================= */
+
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 16px;
+
+    color: var(--events-primary);
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-kicker::before {
+    content: "";
+
+    width: 28px;
+    height: 2px;
+
+    background: var(--events-accent);
+}
+
+
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 42px;
+}
+
+.section-heading h2 {
+
+    color: var(--events-dark);
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    line-height: 1.25;
+
+    font-weight: 800;
+}
+
+.section-count {
+
+    color: var(--events-muted);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    direction: ltr;
+}
+
+
+/* =========================================================
+   04. BUTTON
+   ========================================================= */
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    min-height: 52px;
+
+    padding: 0 28px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-primary {
+
+    color: var(--events-white);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--events-primary),
+            var(--events-primary-dark)
+        );
+
+    box-shadow:
+        0 12px 28px rgba(143, 29, 44, .18);
+}
+
+.btn-primary:hover {
+
+    box-shadow:
+        0 18px 35px rgba(143, 29, 44, .28);
+}
+
+.btn-light {
+
+    color: var(--events-primary);
+
+    background: var(--events-white);
+}
+
+.btn-outline {
+
+    color: var(--events-dark);
+
+    border: 1px solid var(--events-border);
+
+    background: transparent;
+}
+
+.btn-outline:hover {
+
+    color: var(--events-white);
+
+    border-color: var(--events-primary);
+
+    background: var(--events-primary);
+}
+
+
+/* =========================================================
+   05. EVENTS HERO
+   ========================================================= */
+
+.events-hero {
+
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(184, 137, 75, .14),
+            transparent 28%
+        ),
+        linear-gradient(
+            120deg,
+            #171717 0%,
+            #211d1d 55%,
+            #35151d 100%
+        );
+
+    color: var(--events-white);
+}
+
+
+.events-hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 50%;
+
+    left: -180px;
+    bottom: -280px;
+}
+
+
+.events-hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border: 1px solid rgba(184,137,75,.16);
+
+    border-radius: 50%;
+
+    right: -120px;
+    top: -130px;
+}
+
+
+.events-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 820px;
+
+    padding: 90px 0;
+}
+
+
+.events-hero .section-kicker {
+
+    color: #d8b579;
+}
+
+
+.events-hero h1 {
+
+    max-width: 780px;
+
+    margin-bottom: 24px;
+
+    font-size: clamp(44px, 7vw, 82px);
+
+    line-height: 1.15;
+
+    font-weight: 900;
+
+    letter-spacing: -1px;
+}
+
+
+.events-hero h1 span {
+
+    display: inline-block;
+
+    color: #d4a967;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style: italic;
+}
+
+
+.events-hero p {
+
+    max-width: 690px;
+
+    color: rgba(255,255,255,.72);
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+/* =========================================================
+   06. INTRO
+   ========================================================= */
+
+.events-intro-section {
+
+    padding: 100px 0 75px;
+
+    background: var(--events-white);
+}
+
+
+.events-intro-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, .9fr)
+        minmax(0, 1.1fr);
+
+    gap: 90px;
+
+    align-items: end;
+}
+
+
+.events-intro-grid h2 {
+
+    max-width: 500px;
+
+    color: var(--events-dark);
+
+    font-size: clamp(34px, 5vw, 58px);
+
+    line-height: 1.25;
+}
+
+
+.events-intro-grid h2 span {
+
+    color: var(--events-primary);
+}
+
+
+.events-intro-grid > p {
+
+    color: var(--events-muted);
+
+    font-size: 16px;
+
+    line-height: 2.1;
+
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   07. EVENTS LIST
+   ========================================================= */
+
+.events-list-section {
+
+    padding: 80px 0 110px;
+}
+
+
+.upcoming-events {
+
+    background: var(--events-light);
+}
+
+
+.events-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 26px;
+}
+
+
+/* =========================================================
+   08. EVENT CARD
+   ========================================================= */
+
+.event-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--events-white);
+
+    border: 1px solid var(--events-border);
+
+    border-radius: var(--events-radius);
+
+    box-shadow:
+        0 8px 30px rgba(20,20,20,.04);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+}
+
+
+.event-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow:
+        var(--events-shadow);
+}
+
+
+.event-image {
+
+    position: relative;
+
+    height: 245px;
+
+    overflow: hidden;
+
+    background: #ddd;
+}
+
+
+.event-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease;
+}
+
+
+.event-card:hover .event-image img {
+
+    transform: scale(1.06);
+}
+
+
+.event-status {
+
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    padding: 6px 13px;
+
+    color: var(--events-white);
+
+    background: var(--events-primary);
+
+    border-radius: 30px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.event-body {
+
+    padding: 28px;
+}
+
+
+.event-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+    color: var(--events-muted);
+
+    font-size: 11px;
+}
+
+
+.event-meta span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+.event-meta i {
+
+    color: var(--events-accent);
+}
+
+
+.event-category {
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--events-primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    direction: ltr;
+}
+
+
+.event-body h3 {
+
+    margin-bottom: 13px;
+
+    color: var(--events-dark);
+
+    font-size: 21px;
+
+    line-height: 1.55;
+
+    font-weight: 800;
+}
+
+
+.event-body p {
+
+    margin-bottom: 22px;
+
+    color: var(--events-muted);
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+
+.event-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--events-primary);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition: gap .3s ease;
+}
+
+
+.event-link i {
+
+    transition: transform .3s ease;
+}
+
+
+.event-link:hover {
+
+    gap: 15px;
+}
+
+
+.event-link:hover i {
+
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   09. FEATURED EVENT
+   ========================================================= */
+
+.featured-event {
+
+    padding: 110px 0;
+
+    background: var(--events-dark);
+}
+
+
+.featured-event-inner {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(0, .95fr);
+
+    min-height: 560px;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #252525,
+            #171717
+        );
+}
+
+
+.featured-event-image {
+
+    min-height: 560px;
+
+    overflow: hidden;
+}
+
+
+.featured-event-image img {
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .7s ease;
+}
+
+
+.featured-event-inner:hover
+.featured-event-image img {
+
+    transform: scale(1.04);
+}
+
+
+.featured-event-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 70px;
+}
+
+
+.featured-event-content .section-kicker {
+
+    color: #d5ad6d;
+}
+
+
+.featured-event-content .event-category {
+
+    color: #d5ad6d;
+
+    margin-top: 10px;
+}
+
+
+.featured-event-content h2 {
+
+    margin-bottom: 22px;
+
+    color: var(--events-white);
+
+    font-size: clamp(32px, 4vw, 52px);
+
+    line-height: 1.3;
+}
+
+
+.featured-event-content h2 span {
+
+    display: block;
+
+    color: #d1a465;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style: italic;
+}
+
+
+.featured-event-content > p {
+
+    max-width: 520px;
+
+    margin-bottom: 35px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 14px;
+
+    line-height: 2.1;
+}
+
+
+/* =========================================================
+   10. FEATURED DETAILS
+   ========================================================= */
+
+.featured-event-details {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+
+.featured-event-details > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.featured-event-details i {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: #d3aa69;
+
+    border: 1px solid rgba(211,170,105,.35);
+
+    border-radius: 50%;
+}
+
+
+.featured-event-details small {
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+}
+
+
+.featured-event-details strong {
+
+    color: var(--events-white);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   11. PAST EVENTS
+   ========================================================= */
+
+.past-events {
+
+    background: var(--events-white);
+}
+
+
+.past-events-list {
+
+    border-top: 1px solid var(--events-border);
+}
+
+
+.past-event {
+
+    display: grid;
+
+    grid-template-columns:
+        90px
+        minmax(0, 1fr)
+        150px
+        52px;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding: 28px 10px;
+
+    border-bottom: 1px solid var(--events-border);
+
+    transition:
+        background .3s ease,
+        padding .3s ease;
+}
+
+
+.past-event:hover {
+
+    padding-inline: 22px;
+
+    background: var(--events-light);
+}
+
+
+.past-event-date {
+
+    text-align: center;
+
+    color: var(--events-primary);
+}
+
+
+.past-event-date strong {
+
+    display: block;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 36px;
+
+    line-height: 1;
+}
+
+
+.past-event-date span {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    direction: ltr;
+}
+
+
+.past-event-content h3 {
+
+    margin-bottom: 6px;
+
+    color: var(--events-dark);
+
+    font-size: 18px;
+
+    line-height: 1.5;
+}
+
+
+.past-event-content p {
+
+    max-width: 650px;
+
+    color: var(--events-muted);
+
+    font-size: 12px;
+
+    line-height: 1.9;
+}
+
+
+.past-event-location {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 8px;
+
+    color: var(--events-muted);
+
+    font-size: 12px;
+}
+
+
+.past-event-location i {
+
+    color: var(--events-accent);
+}
+
+
+.past-event-link {
+
+    display: grid;
+
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--events-primary);
+
+    border: 1px solid var(--events-border);
+
+    border-radius: 50%;
+
+    transition:
+        color .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+
+.past-event-link:hover {
+
+    color: var(--events-white);
+
+    border-color: var(--events-primary);
+
+    background: var(--events-primary);
+
+    transform: translateX(-4px);
+}
+
+
+/* =========================================================
+   12. EVENTS CTA
+   ========================================================= */
+
+.events-cta {
+
+    padding: 90px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--events-primary),
+            var(--events-primary-dark)
+        );
+}
+
+
+.events-cta-inner {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+.events-cta .section-kicker {
+
+    color: #e1bf84;
+}
+
+
+.events-cta h2 {
+
+    margin-bottom: 12px;
+
+    color: var(--events-white);
+
+    font-size: clamp(34px, 5vw, 54px);
+
+    line-height: 1.25;
+}
+
+
+.events-cta h2 span {
+
+    color: #e3bc7d;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-style: italic;
+}
+
+
+.events-cta p {
+
+    max-width: 620px;
+
+    color: rgba(255,255,255,.72);
+
+    font-size: 14px;
+}
+
+
+.events-cta-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    flex-shrink: 0;
+}
+
+
+.events-cta .join-outline {
+
+    color: var(--events-white);
+
+    border-color: rgba(255,255,255,.35);
+}
+
+
+.events-cta .join-outline:hover {
+
+    color: var(--events-primary);
+
+    background: var(--events-white);
+
+    border-color: var(--events-white);
+}
+
+
+/* =========================================================
+   13. TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .events-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .events-intro-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+
+    .featured-event-inner {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .featured-event-image {
+
+        min-height: 400px;
+
+    }
+
+
+    .featured-event-content {
+
+        padding: 55px;
+
+    }
+
+
+    .events-cta-inner {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+/* =========================================================
+   14. MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width: min(
+            100% - 30px,
+            1180px
+        );
+
+    }
+
+
+    .events-hero {
+
+        min-height: 440px;
+
+    }
+
+
+    .events-hero-content {
+
+        padding: 70px 0;
+
+    }
+
+
+    .events-hero h1 {
+
+        font-size: 44px;
+
+    }
+
+
+    .events-hero p {
+
+        font-size: 14px;
+
+    }
+
+
+    .events-intro-section {
+
+        padding: 70px 0 45px;
+
+    }
+
+
+    .events-list-section {
+
+        padding: 60px 0 75px;
+
+    }
+
+
+    .section-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .section-heading h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .events-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .event-image {
+
+        height: 230px;
+
+    }
+
+
+    .event-body {
+
+        padding: 24px;
+
+    }
+
+
+    .featured-event {
+
+        padding: 70px 0;
+
+    }
+
+
+    .featured-event-image {
+
+        min-height: 280px;
+
+    }
+
+
+    .featured-event-content {
+
+        padding: 40px 25px;
+
+    }
+
+
+    .featured-event-content h2 {
+
+        font-size: 34px;
+
+    }
+
+
+    .featured-event-details {
+
+        flex-direction: column;
+
+        gap: 18px;
+
+    }
+
+
+    .past-event {
+
+        grid-template-columns:
+            65px
+            minmax(0, 1fr)
+            45px;
+
+        gap: 15px;
+
+    }
+
+
+    .past-event-location {
+
+        display: none;
+
+    }
+
+
+    .past-event-date strong {
+
+        font-size: 30px;
+
+    }
+
+
+    .past-event-content h3 {
+
+        font-size: 15px;
+
+    }
+
+
+    .past-event-content p {
+
+        font-size: 11px;
+
+    }
+
+
+    .past-event:hover {
+
+        padding-inline: 10px;
+
+    }
+
+
+    .events-cta {
+
+        padding: 70px 0;
+
+    }
+
+
+    .events-cta h2 {
+
+        font-size: 38px;
+
+    }
+
+
+    .events-cta-actions {
+
+        width: 100%;
+
+        flex-direction: column;
+
+    }
+
+
+    .events-cta-actions .btn {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   15. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .events-hero h1 {
+
+        font-size: 38px;
+
+    }
+
+
+    .event-meta {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 7px;
+
+    }
+
+
+    .past-event {
+
+        grid-template-columns:
+            55px
+            minmax(0, 1fr)
+            40px;
+
+    }
+
+
+    .past-event-date strong {
+
+        font-size: 26px;
+
+    }
+
+
+    .past-event-content h3 {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+/* =========================================================
+   16. ACCESSIBILITY
+   ========================================================= */
+
+a:focus-visible,
+button:focus-visible {
+
+    outline: 3px solid rgba(184,137,75,.55);
+
+    outline-offset: 4px;
+
+}
+
+
+/* =========================================================
+   17. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+    }
+
+}
