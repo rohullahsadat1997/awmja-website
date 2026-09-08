@@ -33,6 +33,9 @@ ALLOWED_HOSTS = [ "awmja-website-production.up.railway.app",
     "127.0.0.1",
     "localhost",]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://awmja-website-production.up.railway.app",
+]
 
 # Application definition
 
@@ -52,7 +55,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
