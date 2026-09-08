@@ -29,7 +29,9 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ "awmja-website-production.up.railway.app",
+    "127.0.0.1",
+    "localhost",]
 
 
 # Application definition
