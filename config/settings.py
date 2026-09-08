@@ -35,7 +35,11 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
 ]
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://awmja.org",
+    "https://www.awmja.org",
+    "https://awmja-website-production.up.railway.app",
+]
 
 # Application definition
 
